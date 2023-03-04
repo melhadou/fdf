@@ -1,0 +1,18 @@
+[
+ {
+  "directory": "/Users/melhadou/dev/42/fdf", 
+  "arguments": [
+   "gcc", 
+   "-Wall", 
+   "-Wextra", 
+   "-Werror", 
+   "-Iincludes", 
+   "-I/usr/local/include", 
+   "-c", 
+   "src/main.c", 
+   "-o", 
+   "src/main.o"
+  ], 
+  "file": "src/main.c"
+ }
+]
