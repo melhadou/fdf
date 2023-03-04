@@ -1,3 +1,5 @@
 fdf
 .cache
 *.o
+libft.a
+gnl.a
