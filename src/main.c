@@ -1,50 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
+/*   Updated: 2023/03/14 16:35:14 by melhadou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
+#include "mlx.h"
 #include <stdio.h>
-
-// typedef struct t_vars {
-// 	void *mlx;
-// 	void *mlx_win;
-// } t_vars;
-
-// int	ft_close(int keycode, t_vars *vars)
-// {
-// 	if (keycode == 53)
-// 	{
-// 		mlx_destroy_window(vars->mlx, vars->mlx_win);
-// 		exit(0);
-// 	}
-// 	return (0);
-// }
+#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {
-
-	// int i = -1;
-	// int j ; 
-	// // void *img;
-	// t_vars vars;
-
-	// vars.mlx = mlx_init();
-	// vars.mlx_win = mlx_new_window(vars.mlx, 600, 600, "Hello world!");
-	// // img = mlx_new_image(vars.mlx, 700, 700);
-	// j = 40;
-	// while (j < 600 )
-	// {
-	// 	while (++i < 600)
-	// 	{
-	// 		mlx_pixel_put(vars.mlx, vars.mlx_win, i , j, 0xFF0033);
-	// 		mlx_pixel_put(vars.mlx, vars.mlx_win, j , i, 0xFF0033);
-	// 	}
-	// 	j += 40;
-	// 	i = 0;
-	// }
-
-	// j = ft_strlen("mohamed");
-	// printf("%d ", j);
-	// // mlx_put_image_to_window(vars.mlx, vars.mlx_win, img, 300, 300);
-	// mlx_hook(vars.mlx_win, 2, 1L<<0, ft_close, &vars);
-	// mlx_loop(vars.mlx);
-	
+	void *mlx;
+	void *mlx_win;
+	// void *mlx_img;
+	int_array **i_map;
+	size_t i;
+	size_t j;
+	i = 0;
+	j = 0;
 	if ( argc != 2 )
 	{
 		printf( "usage: %s filename", argv[0] );
@@ -55,8 +35,38 @@ int	main(int argc, char *argv[])
 		char **map;
 		fd = open(argv[1],O_RDONLY);
 		if(fd == 0)
+		{
 			printf("could not open file %s\n", argv[1]);
+			return 1;
+		}
 		map = read_map(fd);
-		printf("%s",map[0]);
+		if(!map)
+			return 1;
+
+		mlx = mlx_init();
+		mlx_win = mlx_new_window(mlx, 3080, 1720, "FDF");
+		// mlx_img = mlx_new_image(mlx, 1080, 720);
+		i_map = parse_map(map);
+
+		t_vec *u;
+		u = malloc(sizeof(t_vec));
+
+
+		t_vec *v;
+		v = malloc(sizeof(t_vec));
+		while(i_map[i])
+		{
+			j = 0;
+			while (j < i_map[i]->size)
+			{
+				draw_line(mlx, mlx_win, u->x * 30, u->y * 30, v->x * 30, v->y * 30, 0xFFFFFF);
+				j++;
+			}
+			i++;
+		}
+				// draw_line(mlx, mlx_win, j * 30, i * 30, (j + 1) * 30, i * 30, 0xFF0000);
+				// draw_line(mlx, mlx_win, iso_map[j]->x * 3, iso_map[j]->y * 3,iso_map[j]->x * 3, iso_map[j]->y * 3, 0xFF0000);
+				// draw_line(mlx, mlx_win, j * 30, i * 30, j * 30, (i + 1) * 30, 0x00FF00);
+		mlx_loop(mlx);
 	}
 }
