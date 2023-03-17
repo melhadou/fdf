@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/12 22:01:15 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:26:36 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void draw_line(void *mlx, void *mlx_win, int x0, int y0, int x1, int y1, int col
 	error = dx + dy;
 	while (1)
 	{
-		mlx_pixel_put(mlx, mlx_win, x0, y0, color);
+		mlx_pixel_put(mlx, mlx_win, x0 + 1040, y0 + 720, color);
 		if (x0 == x1 && y0 == y1)
 			break;
 		e2 = 2 * error;
@@ -55,8 +55,42 @@ void draw_line(void *mlx, void *mlx_win, int x0, int y0, int x1, int y1, int col
 	}
 }
 
-void to_Isometric(int x, int y, int z, t_vec *u)
+void to_Isometric(int x, int y, int z, t_point *p)
 {
-	u->x = (x - y) * cos(0.5);
-	u->y = (x + y) * sin(0.5) - z;
+	p->x = ((x - y ) * cos(0.5)) * FAC;
+	p->y = ((x + y) * sin(0.5) - z) * FAC;
+}
+
+void drawline(void *mlx, void *mlx_win, int start_x, int start_y, int end_x, int end_y)
+{
+	int dx = abs(end_x - start_x);
+	int dy = abs(end_y - start_y);
+	int x_inc = (end_x > start_x) ? 1 : -1;
+	int y_inc = (end_y > start_y) ? 1 : -1;
+	int x = start_x;
+	int y = start_y;
+
+	if (dx >= dy) {
+			int d = 2 * dy - dx;
+			while (x != end_x) {
+					mlx_pixel_put(mlx, mlx_win, x + 1000, y + 720, RED);
+					if (d > 0) {
+							y += y_inc;
+							d -= 2 * dx;
+					}
+					x += x_inc;
+					d += 2 * dy;
+			}
+	} else {
+			int d = 2 * dx - dy;
+			while (y != end_y) {
+					mlx_pixel_put(mlx, mlx_win, x + 1000, y + 720, RED);
+					if (d > 0) {
+							x += x_inc;
+							d -= 2 * dy;
+					}
+					y += y_inc;
+					d += 2 * dx;
+			}
+	}
 }

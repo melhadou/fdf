@@ -9,7 +9,8 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
-
+# define RED 0xFF0000
+# define FAC 30
 // int array struct
 typedef struct{
 	int *arr;
@@ -19,9 +20,17 @@ typedef struct{
 typedef struct{
 	int x;
 	int y;
-}t_vec;
+} t_point;
 
-void to_Isometric(int x, int y, int z, t_vec *u);
+typedef struct {
+	t_point **p;
+	size_t col;
+	size_t row;
+} t_map;
+
+void drawline(void *mlx, void *mlx_win, int start_x, int start_y, int end_x, int end_y);
+t_map **final_map(int_array **map);
+void to_Isometric(int x, int y, int z, t_point *p);
 void draw_line(void *mlx, void *mlx_win, int x0, int y0, int x1, int y1, int color);
 size_t arr_len(char **arr);
 int_array *split_line(char *line);
