@@ -1,5 +1,5 @@
 NAME = gnl.a
-CC = cc
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror -c
 RM = rm -rf
 MANK = test.c
@@ -13,7 +13,7 @@ $(NAME): $(MAN)
 
 %.o:%.c
 	$(CC) $(CFLAGS) $<
-	ar -rc $(NAME) $@
+	@ar -rc $(NAME) $@
 
 clean:
 	$(RM) *.o

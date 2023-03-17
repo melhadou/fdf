@@ -1,5 +1,5 @@
 NAME = fdf 
-CC = gcc 
+CC = cc 
 LIBFT = libs/libft
 GNL = libs/getnextline
 INCLUDES = -Iincludes -I/usr/local/include 
@@ -9,7 +9,7 @@ SRC_FILES = main.c
 PARSING_DIR = $(SRC_DIR)parsing/
 PARSING_FILES = read_map.c parse.c check_overflow.c
 RENDRING_DIR = $(SRC_DIR)rendring/
-RENDRING_FILES = draw.c
+RENDRING_FILES = draw.c resize.c
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(PARSING_DIR), $(PARSING_FILES))
 CFILES += $(addprefix $(RENDRING_DIR), $(RENDRING_FILES))

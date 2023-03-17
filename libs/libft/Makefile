@@ -1,5 +1,5 @@
 NAME = libft.a
-CC = cc
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror -c
 RM = rm -rf
 MANK = test.c
@@ -26,7 +26,7 @@ bonus: $(MAN) $(BON)
 
 %.o:%.c
 	$(CC) $(CFLAGS) $<
-	ar -rc $(NAME) $@
+	@ar -rc $(NAME) $@
 
 clean:
 	$(RM) *.o
