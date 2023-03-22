@@ -6,20 +6,18 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/18 00:23:13 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:25:14 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {
 	void *mlx;
 	void *mlx_win;
-	// void *mlx_img;
+	t_data *mlx_img;
 	int_array **i_map;
 	size_t y;
 	size_t x;
@@ -42,26 +40,27 @@ int	main(int argc, char *argv[])
 		map = read_map(fd);
 		if(!map)
 			return 1;
-		
-		
 		i_map = parse_map(map);
 		t_map **f_map = final_map(i_map);
 
+		mlx_img = malloc(sizeof(t_data));
 		mlx = mlx_init();
 		mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
-	
+		mlx_img->img = mlx_new_image(mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
+		mlx_img->addr = mlx_get_data_addr(mlx_img->img, &mlx_img->bits_per_pixel, &mlx_img->line_length, &mlx_img->endian);
+
 		while (y < f_map[0]->row)
 		{
 			x = 1;
 			while (x < f_map[0]->col)
 			{
-				bresenham(mlx, mlx_win, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
-				bresenham(mlx, mlx_win, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
+				bresenham(mlx_img, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
+				bresenham(mlx_img, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
 				x++;
 			}
 			y++;
 		}
-		resize_map(f_map);
+		mlx_put_image_to_window(mlx, mlx_win, mlx_img->img,0, 0);
 		mlx_loop(mlx);
 	}
 }
