@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/15 19:41:00 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:02:09 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ t_map **final_map(int_array **map)
 		}
 		i++;
 	}
-
 
 	res[0]->row = len;
 	res[0]->col = map[0]->size;

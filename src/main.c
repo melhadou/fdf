@@ -6,23 +6,16 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/22 15:25:14 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/23 03:22:21 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
+#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
-	void *mlx;
-	void *mlx_win;
-	t_data *mlx_img;
-	int_array **i_map;
-	size_t y;
-	size_t x;
-	y = 1;
-	x = 0;
 	if ( argc != 2 )
 	{
 		printf( "usage: %s filename", argv[0] );
@@ -30,7 +23,9 @@ int	main(int argc, char *argv[])
 	}else
 	{
 		int fd;
+		int_array **i_map;
 		char **map;
+		t_map **f_map;
 		fd = open(argv[1],O_RDONLY);
 		if(fd == 0)
 		{
@@ -41,26 +36,23 @@ int	main(int argc, char *argv[])
 		if(!map)
 			return 1;
 		i_map = parse_map(map);
-		t_map **f_map = final_map(i_map);
+		f_map = final_map(i_map);
 
-		mlx_img = malloc(sizeof(t_data));
-		mlx = mlx_init();
-		mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
-		mlx_img->img = mlx_new_image(mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
-		mlx_img->addr = mlx_get_data_addr(mlx_img->img, &mlx_img->bits_per_pixel, &mlx_img->line_length, &mlx_img->endian);
 
-		while (y < f_map[0]->row)
-		{
-			x = 1;
-			while (x < f_map[0]->col)
-			{
-				bresenham(mlx_img, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
-				bresenham(mlx_img, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
-				x++;
-			}
-			y++;
-		}
-		mlx_put_image_to_window(mlx, mlx_win, mlx_img->img,0, 0);
-		mlx_loop(mlx);
+		f_map[0]->img = malloc(sizeof(t_data));
+		f_map[0]->mlx = mlx_init();
+		f_map[0]->mlx_win = mlx_new_window(f_map[0]->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+		f_map[0]->img->img = mlx_new_image(f_map[0]->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
+		f_map[0]->img->addr = mlx_get_data_addr(f_map[0]->img->img, &f_map[0]->img->bits_per_pixel, &f_map[0]->img->line_length, &f_map[0]->img->endian);
+
+		f_map[0]->div_x = 0;
+		f_map[0]->div_y = 0;
+
+		
+		// redring
+		rendring(f_map);
+
+		mlx_key_hook(f_map[0]->mlx_win, &key_hook, f_map);
+		mlx_loop(f_map[0]->mlx);
 	}
 }

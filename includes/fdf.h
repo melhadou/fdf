@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/19 22:16:45 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/23 03:16:55 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define FAC 20
 # define WINDOW_WIDTH 1900
 # define WINDOW_HEIGHT 1080
+# define UP_KEY 126
+# define DOWN_KEY 125
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
 
 typedef struct	s_data {
 	void	*img;
@@ -35,26 +39,42 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-// int array struct
+/**
+	* Array with size
+	*/
 typedef struct{
 	int *arr;
 	size_t size;
 } int_array;
 
+/**
+	* Point Struct
+	*/
 typedef struct{
 	int x;
 	int y;
 } t_point;
 
+/**
+	* Map Struct
+	*/
 typedef struct {
+	void *mlx;
+	void *mlx_win;
+	t_data *img;
 	t_point **p;
 	size_t col;
 	size_t row;
+	int div_x;
+	int div_y;
 } t_map;
 
+int key_hook(int key, t_map **map);
+void rendring(t_map **f_map);
+float sc(t_map **map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void resize_map(t_map **map);
-void	bresenham(t_data *img, t_point start, t_point end);
+void	bresenham(t_data *img, t_point start, t_point end, int div_x, int div_y);
 t_map **final_map(int_array **map);
 void to_Isometric(int x, int y, int z, t_point *p);
 size_t arr_len(char **arr);
