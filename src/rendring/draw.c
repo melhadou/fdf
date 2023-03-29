@@ -6,32 +6,49 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/23 03:35:41 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/29 04:36:52 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-void	bresenham(t_data *img, t_point start, t_point end, int div_x, int div_y)
+void	bresenham(t_map **map, t_point start, t_point end)
 {
-	int dx = abs(end.x - start.x);
-	int dy = abs(end.y - start.y);
-	int x = start.x;
-	int y = start.y;
-	int sx = (start.x < end.x) ? 1 : -1;
-	int sy = (start.y < end.y) ? 1 : -1;
-	int err = dx - dy;
+	int color;
+	int dx;
+	int dy;
+	int x;
+	int y;
+	int sx;
+	int sy;
+	int err;
+	int e2;
+
+	dx = abs(end.x - start.x);
+	dy = abs(end.y - start.y);
+	x = start.x;
+	y = start.y;
+	sx = -1;
+	sy = -1;
+	if (start.x < end.x)
+		sx = 1;
+	if (start.y < end.y)
+		sy = 1;
+	err = dx - dy;
+	 
+	color = WHITE;
+	if (end.color == RED || start.color == RED)
+		color = RED;
+	if (end.color == RED && start.color == RED)
+		color = GREEN;
 
 	while (1)
 	{
 		// Centring the points
-		my_mlx_pixel_put(img, x + div_x + (WINDOW_WIDTH / 2), y + div_y + (WINDOW_HEIGHT / 2), 0xFFFFFF);
+		my_mlx_pixel_put(map[0]->img, x + map[0]->div_x + (WINDOW_WIDTH / 2), y + map[0]->div_y + (WINDOW_HEIGHT / 2), color);
 		if (x == end.x && y == end.y)
 			break;
-		int e2 = 2 * err;
+		e2 = 2 * err;
 		if (e2 > -dy)
 		{
 			err -= dy;
@@ -47,6 +64,9 @@ void	bresenham(t_data *img, t_point start, t_point end, int div_x, int div_y)
 
 void to_Isometric(int x, int y, int z, t_point *p)
 {
+	p->color = WHITE;
+	if (z != 0)
+		p->color = RED;
 	p->x = ((y - x ) * cos(0.5)) * FAC;
 	p->y = ((x + y) * sin(0.5) - z) * FAC;
 }
@@ -72,13 +92,14 @@ void rendring(t_map **f_map)
 	y = 1;
 	x = 0;
 	
+	// bresenham(f_map[0]->img, *f_map[0]->p[0], *f_map[y]->p[x], f_map[0]->div_x, f_map[0]->div_y);
 	while (y < f_map[0]->row)
 	{
 		x = 1;
 		while (x < f_map[0]->col)
 		{
-			bresenham(f_map[0]->img, *f_map[y]->p[x - 1], *f_map[y]->p[x], f_map[0]->div_x, f_map[0]->div_y);
-			bresenham(f_map[0]->img, *f_map[y - 1]->p[x], *f_map[y]->p[x], f_map[0]->div_x, f_map[0]->div_y);
+			bresenham(f_map, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
+			bresenham(f_map, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
 			x++;
 		}
 		y++;
@@ -91,11 +112,11 @@ int key_hook(int key, t_map **map)
 	if (key == 53)
 		exit(1);
 	else if (key == UP_KEY)
-		map[0]->div_y += 20;
+		map[0]->div_y -= 20;
 	else if (key == RIGHT_KEY)
 	 map[0]->div_x += 20;
 	else if (key == DOWN_KEY)
-	 map[0]->div_y -= 20;
+	 map[0]->div_y += 20;
 	else if (key == LEFT_KEY)
 		map[0]->div_x -= 20;
 	

@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/23 03:16:55 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/29 04:34:23 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <math.h>
 # define RED 0xFF0000
 # define GREEN 0x00FF00
+# define WHITE 0xFFFFFF
 # define FAC 20
 # define WINDOW_WIDTH 1900
 # define WINDOW_HEIGHT 1080
@@ -53,6 +54,7 @@ typedef struct{
 typedef struct{
 	int x;
 	int y;
+	int color;
 } t_point;
 
 /**
@@ -74,7 +76,7 @@ void rendring(t_map **f_map);
 float sc(t_map **map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void resize_map(t_map **map);
-void	bresenham(t_data *img, t_point start, t_point end, int div_x, int div_y);
+void	bresenham(t_map **map, t_point start, t_point end);
 t_map **final_map(int_array **map);
 void to_Isometric(int x, int y, int z, t_point *p);
 size_t arr_len(char **arr);

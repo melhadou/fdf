@@ -6,13 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/23 03:22:21 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/29 03:45:16 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
-#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
@@ -20,7 +18,8 @@ int	main(int argc, char *argv[])
 	{
 		printf( "usage: %s filename", argv[0] );
 		return (1);
-	}else
+	}
+	else
 	{
 		int fd;
 		int_array **i_map;

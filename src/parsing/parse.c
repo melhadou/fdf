@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/22 16:02:09 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/28 01:15:34 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_map **final_map(int_array **map)
 		}
 		while (len < res[0]->col)
 		{
-			res[i]->p[len] = malloc(sizeof(t_point *));
+			res[i]->p[len] = malloc(sizeof(t_point));
 			if (!res[i]->p[len])
 			{
 				printf("hello");
