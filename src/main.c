@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/29 03:45:16 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:49:34 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int argc, char *argv[])
 		f_map[0]->div_x = 0;
 		f_map[0]->div_y = 0;
 
-		
 		// redring
 		rendring(f_map);
 

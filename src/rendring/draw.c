@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/29 04:36:52 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/03/30 01:47:51 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,15 @@ void rendring(t_map **f_map)
 	y = 1;
 	x = 0;
 	
-	// bresenham(f_map[0]->img, *f_map[0]->p[0], *f_map[y]->p[x], f_map[0]->div_x, f_map[0]->div_y);
 	while (y < f_map[0]->row)
 	{
 		x = 1;
 		while (x < f_map[0]->col)
 		{
+			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y - 1]->p[x]);
 			bresenham(f_map, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
 			bresenham(f_map, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
+			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y]->p[x - 1]);
 			x++;
 		}
 		y++;
