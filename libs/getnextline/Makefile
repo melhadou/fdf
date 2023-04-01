@@ -2,7 +2,6 @@ NAME = gnl.a
 CC = @cc
 CFLAGS = -Wall -Wextra -Werror -c
 RM = rm -rf
-MANK = test.c
 MANDATORY = get_next_line.c get_next_line_utils.c
 
 MAN=$(MANDATORY:%.c=%.o)
