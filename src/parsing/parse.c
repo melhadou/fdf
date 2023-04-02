@@ -6,13 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/28 01:15:34 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/01 06:25:08 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int_array *split_line(char *line)
 {

@@ -48,7 +48,7 @@ $(NAME): libft gnl mlx $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -framework AppKit -g3 -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -g3 -o $@
+	$(CC) $(INCLUDES) -c $< -g3 -o $@
 
 clean :
 	$(RM) $(OBJ)

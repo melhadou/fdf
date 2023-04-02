@@ -6,12 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:42:55 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/18 00:09:52 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/01 07:46:37 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "fdf.h"
-#include <stdio.h>
 
 void resize_map(t_map **map)
 {
