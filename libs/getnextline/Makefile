@@ -1,5 +1,5 @@
 NAME = gnl.a
-CC = @cc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -c
 RM = rm -rf
 MANDATORY = get_next_line.c get_next_line_utils.c

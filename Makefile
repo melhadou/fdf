@@ -24,27 +24,28 @@ RM = rm -rf
 OBJ = $(CFILES:%.c=%.o)
 
 # color list
-BRed=\033[1;31m
-BCyan=\033[1;36m
-BYellow=\033[1;33m
+BRED=\033[1;31m
+BCYAN=\033[1;36m
+BYELLOW=\033[1;33m
+NC=\033[0m
 
-all : $(NAME)
-	@echo "${BCyan}Successfully Completed"
+all :  libft gnl mlx $(NAME)
+	@echo "${BCYAN}Successfully Completed ${NC}"
 
 CFLAGS = -g -fsanitize=address
 debug : $(NAME)
 
 libft:
-	@echo "${BYellow}Making Libft"
+	@echo "${BYELLOW}Making Libft ${NC}"
 	@cd $(LIBFT) && make
 mlx: 
-	@echo "${BYellow}Making MiniLibx"
+	@echo "${BYELLOW}Making MiniLibx ${NC}"
 	@cd $(MLX) && make
 gnl: 
-	@echo "${BYellow}Making getnextline"
+	@echo "${BYELLOW}Making getnextline ${NC}"
 	@cd $(GNL) && make
 
-$(NAME): libft gnl mlx $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -framework AppKit -g3 -o $(NAME)
 
 %.o: %.c
@@ -56,7 +57,7 @@ clean :
 	@cd $(GNL) && make clean
 	@cd $(MLX) && make fclean
 	@clear
-	@echo "\033[92mSuccessfully Cleaned\n\033[0m"
+	@echo "${BRED}Successfully Cleaned ${NC}"
 
 fclean : clean
 	$(RM) $(NAME)
@@ -64,6 +65,6 @@ fclean : clean
 	@cd $(GNL) && make fclean
 	@cd $(MLX) && make fclean
 	@clear
-	@echo "\033[92mSuccessfully Cleaned using Fclean\n\033[0m"
+	@echo "${BRED}Successfully Cleaned using Fclean ${NC}"
 
 re: fclean all
