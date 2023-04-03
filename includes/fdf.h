@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/01 05:03:57 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:37:31 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define DOWN_KEY 125
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
+# define PLUS_KEY 69
+# define MINUS_KEY 78
 
 typedef struct	s_data {
 	void	*img;
@@ -52,8 +54,8 @@ typedef struct{
 	* Point Struct
 	*/
 typedef struct{
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 	int	color;
 } t_point;
 
@@ -67,9 +69,11 @@ typedef struct {
 	t_point	**p;
 	size_t	col;
 	size_t	row;
-	int	div_x;
-	int	div_y;
+	float	div_x;
+	float	div_y;
+	float zoom;
 } t_map;
+
 
 int	key_hook(int key, t_map **map);
 void	rendring(t_map **f_map);

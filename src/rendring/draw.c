@@ -6,11 +6,12 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/31 23:57:55 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:37:35 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void	bresenham(t_map **map, t_point start, t_point end)
 {
@@ -24,10 +25,19 @@ void	bresenham(t_map **map, t_point start, t_point end)
 	int err;
 	int e2;
 
-	dx = abs(end.x - start.x);
-	dy = abs(end.y - start.y);
-	x = start.x;
-	y = start.y;
+
+	
+	start.x *= map[0]->zoom;
+	start.y *= map[0]->zoom;
+	end.x *= map[0]->zoom;
+	end.y *= map[0]->zoom;
+
+	dx = abs((int)end.x - (int)start.x);
+	dy = abs((int)end.y - (int)start.y);
+
+	x = (int)start.x;
+	y = (int)start.y;
+
 	sx = -1;
 	sy = -1;
 	if (start.x < end.x)
@@ -46,7 +56,7 @@ void	bresenham(t_map **map, t_point start, t_point end)
 	{
 		// Centring the points
 		my_mlx_pixel_put(map[0]->img, x + map[0]->div_x + (WINDOW_WIDTH / 2), y + map[0]->div_y + (WINDOW_HEIGHT / 2), color);
-		if (x == end.x && y == end.y)
+		if (x == (int)end.x && y == (int)end.y)
 			break;
 		e2 = 2 * err;
 		if (e2 > -dy)
@@ -99,6 +109,7 @@ void rendring(t_map **f_map)
 		{
 			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y - 1]->p[x]);
 			bresenham(f_map, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
+
 			bresenham(f_map, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
 			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y]->p[x - 1]);
 			x++;
@@ -110,6 +121,7 @@ void rendring(t_map **f_map)
 
 int key_hook(int key, t_map **map)
 {
+	dprintf(1,"%d\t",key );
 	if (key == 53)
 		exit(1);
 	else if (key == UP_KEY)
@@ -120,11 +132,14 @@ int key_hook(int key, t_map **map)
 	 map[0]->div_y += 20;
 	else if (key == LEFT_KEY)
 		map[0]->div_x -= 20;
-	
+	else if (key == PLUS_KEY)
+		map[0]->zoom *= 1.2;
+	else if (key == MINUS_KEY)
+		map[0]->zoom /= 1.2;
+
 	mlx_clear_window(map[0]->mlx, map[0]->mlx_win);
 	map[0]->img->img = mlx_new_image(map[0]->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
 	map[0]->img->addr = mlx_get_data_addr(map[0]->img->img, &map[0]->img->bits_per_pixel, &map[0]->img->line_length, &map[0]->img->endian);
 	rendring(map);
-
 	return (0);
 }
