@@ -6,14 +6,14 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 00:32:42 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/23 01:46:51 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:08:50 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-float sc(t_map **map)
+float sc(t_fdf *fdf)
 {
 	int x_max;
 	int y_max;
@@ -24,24 +24,24 @@ float sc(t_map **map)
 
 	i = 0;
 	j = 0;
-	x_min = map[i]->p[j]->x;
-	y_min = map[i]->p[j]->y;
+	x_min = fdf->map[i].p[j]->x;
+	y_min = fdf->map[i].p[j]->y;
 	x_max = x_min;
 	y_max = y_min;
-	while (i < map[0]->row)
+	while (i < fdf->row)
 	{
 		j = 0;
-		while (j < map[0]->col)
+		while (j < fdf->col)
 		{
-			if (map[i]->p[j]->x > x_max)
-				x_max = map[i]->p[j]->x;
-			if (map[i]->p[j]->y > y_max)
-				y_max = map[i]->p[j]->y;
+			if (fdf->map[i].p[j]->x > x_max)
+				x_max = fdf->map[i].p[j]->x;
+			if (fdf->map[i].p[j]->y > y_max)
+				y_max = fdf->map[i].p[j]->y;
 
-			if (map[i]->p[j]->x < x_min)
-				x_min = map[i]->p[j]->x;
-			if (map[i]->p[j]->y < y_min)
-				y_min = map[i]->p[j]->y;
+			if (fdf->map[i].p[j]->x < x_min)
+				x_min = fdf->map[i].p[j]->x;
+			if (fdf->map[i].p[j]->y < y_min)
+				y_min = fdf->map[i].p[j]->y;
 			j++;
 		}
 		i++;

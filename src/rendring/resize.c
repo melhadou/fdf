@@ -6,13 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:42:55 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/01 07:46:37 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 04:54:35 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "fdf.h"
 
-void resize_map(t_map **map)
+void resize_map(t_fdf *fdf)
 {
 	int x_max;
 	int y_max;
@@ -25,20 +25,17 @@ void resize_map(t_map **map)
 	y_max = 0;
 
 	printf("hello");
-	while (i < map[0]->row)
+	while (i < fdf->row)
 	{
 		j = 0;
-		while (j < map[0]->col)
+		while (j < fdf->col)
 		{		
-			if (map[i]->p[j]->x > x_max)
-				x_max = map[i]->p[j]->x;
-			if (map[i]->p[j]->y > y_max)
-				y_max = map[i]->p[j]->y;
+			if (fdf->map[i].p[j]->x > x_max)
+				x_max = fdf->map[i].p[j]->x;
+			if (fdf->map[i].p[j]->y > y_max)
+				y_max = fdf->map[i].p[j]->y;
 			j++;
 		}
 		i++;
 	}
-
-	if (x_max > WINDOW_WIDTH || y_max > WINDOW_HEIGHT)
-		printf("hello");
 }

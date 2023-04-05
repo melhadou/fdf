@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/01 06:25:08 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:10:11 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int_array *split_line(char *line)
 
 int_array **parse_map(char **map)
 {
-	int_array **ret_map;
+	int_array **ret_fdf;
 	size_t len;
 	size_t i;
 
@@ -48,22 +48,22 @@ int_array **parse_map(char **map)
 	if(!map)
 		return NULL;
 	len = arr_len(map);
-	ret_map = malloc((len + 1) * sizeof(int_array *));
-	if (!ret_map)
+	ret_fdf = malloc((len + 1) * sizeof(int_array *));
+	if (!ret_fdf)
 		return NULL;
 	while (map[i])
 	{
-		ret_map[i] = split_line(map[i]);
+		ret_fdf[i] = split_line(map[i]);
 		i++;
 	}
 
-	ret_map[i] = NULL;
-	return ret_map;
+	ret_fdf[i] = NULL;
+	return ret_fdf;
 }
 
-t_map **final_map(int_array **map)
+t_fdf *final_map(int_array **map)
 {
-	t_map **res;
+	t_fdf *res;
 	size_t len;
 	size_t i;
 
@@ -72,14 +72,14 @@ t_map **final_map(int_array **map)
 	while (map[len])
 		len++;
 
-	res = malloc((len + 1) * sizeof(t_map *));
+	res = malloc((len + 1) * sizeof(t_fdf *));
 	if (!res)
 		return NULL;
 
 	while (i < len)
 	{
-		res[i] = malloc(sizeof(t_map));
-		if (!res[i])
+		res = malloc(sizeof(t_fdf));
+		if (!res)
 		{
 			free(res);
 			return NULL;
@@ -87,35 +87,36 @@ t_map **final_map(int_array **map)
 		i++;
 	}
 
-	res[0]->row = len;
-	res[0]->col = map[0]->size;
+	res->row = len;
+	res->col = map[0]->size;
 	i = 0;	
-
-	while (i < res[0]->row)
+	
+	res->map = malloc((res->col + 1) * sizeof(t_map));
+	while (i < res->row)
 	{
 		len = 0;
-		res[i]->p = malloc((res[0]->col + 1) * sizeof(t_point *));
-		if (!res[i]->p)
+		res->map[i].p = malloc((res->col + 1) * sizeof(t_point *));
+		if (!res->map[i].p)
 		{
 			free(res);
 			return NULL;
 		}
-		while (len < res[0]->col)
+		while (len < res->col)
 		{
-			res[i]->p[len] = malloc(sizeof(t_point));
-			if (!res[i]->p[len])
+			res->map[i].p[len] = malloc(sizeof(t_point));
+			if (!res->map[i].p[len])
 			{
 				printf("hello");
-				free(res[i]->p);
+				free(res->map[i].p);
 				free(res);
 				return NULL;
 			}
-			to_Isometric(i, len, map[i]->arr[len], res[i]->p[len]);
+			to_Isometric(i, len, map[i]->arr[len], res->map[i].p[len]);
 			len++;
 		}
-		res[i]->p[len] = NULL;
+		res->map[i].p[len] = NULL;
 		i++;
 	}
-	res[i] = NULL;
+	res->map[i].p = NULL;
 	return (res);
 }

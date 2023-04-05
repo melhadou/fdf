@@ -6,14 +6,14 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/03 00:37:35 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 04:52:43 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-void	bresenham(t_map **map, t_point start, t_point end)
+void	bresenham(t_fdf *fdf, t_point start, t_point end)
 {
 	int color;
 	int dx;
@@ -27,10 +27,10 @@ void	bresenham(t_map **map, t_point start, t_point end)
 
 
 	
-	start.x *= map[0]->zoom;
-	start.y *= map[0]->zoom;
-	end.x *= map[0]->zoom;
-	end.y *= map[0]->zoom;
+	start.x *= fdf->zoom;
+	start.y *= fdf->zoom;
+	end.x *= fdf->zoom;
+	end.y *= fdf->zoom;
 
 	dx = abs((int)end.x - (int)start.x);
 	dy = abs((int)end.y - (int)start.y);
@@ -55,7 +55,7 @@ void	bresenham(t_map **map, t_point start, t_point end)
 	while (1)
 	{
 		// Centring the points
-		my_mlx_pixel_put(map[0]->img, x + map[0]->div_x + (WINDOW_WIDTH / 2), y + map[0]->div_y + (WINDOW_HEIGHT / 2), color);
+		my_mlx_pixel_put(fdf->img, x + fdf->div_x + (WINDOW_WIDTH / 2), y + fdf->div_y + (WINDOW_HEIGHT / 2), color);
 		if (x == (int)end.x && y == (int)end.y)
 			break;
 		e2 = 2 * err;
@@ -77,8 +77,8 @@ void to_Isometric(int x, int y, int z, t_point *p)
 	p->color = WHITE;
 	if (z != 0)
 		p->color = RED;
-	p->x = ((y - x ) * cos(0.5)) * FAC;
-	p->y = ((x + y) * sin(0.5) - z) * FAC;
+	p->x = ((y - x ) * cos(0.5));
+	p->y = ((x + y) * sin(0.5) - z);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -93,53 +93,52 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void rendring(t_map **f_map)
+void rendring(t_fdf *fdf)
 {
-	mlx_clear_window(f_map[0]->mlx, f_map[0]->mlx_win);
+	mlx_clear_window(fdf->mlx, fdf->mlx_win);
 	size_t x;
 	size_t y;
 
 	y = 1;
 	x = 0;
 	
-	while (y < f_map[0]->row)
+	while (y < fdf->row)
 	{
 		x = 1;
-		while (x < f_map[0]->col)
+		while (x < fdf->col)
 		{
-			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y - 1]->p[x]);
-			bresenham(f_map, *f_map[y]->p[x - 1], *f_map[y]->p[x]);
+			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y - 1].p[x]);
+			bresenham(fdf, *fdf->map[y].p[x - 1], *fdf->map[y].p[x]);
 
-			bresenham(f_map, *f_map[y - 1]->p[x], *f_map[y]->p[x]);
-			bresenham(f_map, *f_map[y - 1]->p[x - 1], *f_map[y]->p[x - 1]);
+			bresenham(fdf, *fdf->map[y - 1].p[x], *fdf->map[y].p[x]);
+			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y].p[x - 1]);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(f_map[0]->mlx, f_map[0]->mlx_win, f_map[0]->img->img,0, 0);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img->img, 0, 0);
 }
 
-int key_hook(int key, t_map **map)
+int key_hook(int key, t_fdf *fdf)
 {
-	dprintf(1,"%d\t",key );
 	if (key == 53)
 		exit(1);
 	else if (key == UP_KEY)
-		map[0]->div_y -= 20;
+		fdf->div_y -= 20;
 	else if (key == RIGHT_KEY)
-	 map[0]->div_x += 20;
+	 fdf->div_x += 20;
 	else if (key == DOWN_KEY)
-	 map[0]->div_y += 20;
+	 fdf->div_y += 20;
 	else if (key == LEFT_KEY)
-		map[0]->div_x -= 20;
+		fdf->div_x -= 20;
 	else if (key == PLUS_KEY)
-		map[0]->zoom *= 1.2;
+		fdf->zoom *= 1.2;
 	else if (key == MINUS_KEY)
-		map[0]->zoom /= 1.2;
+		fdf->zoom /= 1.2;
 
-	mlx_clear_window(map[0]->mlx, map[0]->mlx_win);
-	map[0]->img->img = mlx_new_image(map[0]->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
-	map[0]->img->addr = mlx_get_data_addr(map[0]->img->img, &map[0]->img->bits_per_pixel, &map[0]->img->line_length, &map[0]->img->endian);
-	rendring(map);
+	mlx_clear_window(fdf->mlx, fdf->mlx_win);
+	fdf->img->img = mlx_new_image(fdf->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
+	fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel, &fdf->img->line_length, &fdf->img->endian);
+	rendring(fdf);
 	return (0);
 }

@@ -6,11 +6,27 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/02 23:45:54 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:03:57 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int    ft_zome(t_fdf *fdf)
+{
+	int    nbx;
+	int    nby;
+	int    zome;
+
+	nbx = 0;
+	nby = 0;
+	while (nbx * fdf->col < WINDOW_WIDTH)
+		nbx++;
+	while (nby * fdf->row < WINDOW_HEIGHT)
+		nby++;
+	zome = (nbx + nby) / 6 + 1;
+	return (zome);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -24,34 +40,34 @@ int	main(int argc, char *argv[])
 		int fd;
 		int_array **i_map;
 		char **map;
-		t_map **f_map;
+		t_fdf *fdf;
 		fd = open(argv[1],O_RDONLY);
 		if(fd == 0)
 		{
 			printf("could not open file %s\n", argv[1]);
-			return 1;
+			return (1);
 		}
+		
 		map = read_map(fd);
 		if(!map)
-			return 1;
+			return (1);
 		i_map = parse_map(map);
-		f_map = final_map(i_map);
+		fdf = final_map(i_map);
 
+		fdf->img = malloc(sizeof(t_data));
+		fdf->mlx = mlx_init();
+		fdf->mlx_win = mlx_new_window(fdf->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+		fdf->img->img = mlx_new_image(fdf->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
+		fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel, &fdf->img->line_length, &fdf->img->endian);
 
-		f_map[0]->img = malloc(sizeof(t_data));
-		f_map[0]->mlx = mlx_init();
-		f_map[0]->mlx_win = mlx_new_window(f_map[0]->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
-		f_map[0]->img->img = mlx_new_image(f_map[0]->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
-		f_map[0]->img->addr = mlx_get_data_addr(f_map[0]->img->img, &f_map[0]->img->bits_per_pixel, &f_map[0]->img->line_length, &f_map[0]->img->endian);
+		fdf->div_x = 0;
+		fdf->div_y = 0;
+		fdf->zoom = ft_zome(fdf);
 
-		f_map[0]->div_x = 0;
-		f_map[0]->div_y = 0;
-		f_map[0]->zoom = 1;
+		rendring(fdf);
 
-		// redring
-		rendring(f_map);
-
-		mlx_key_hook(f_map[0]->mlx_win, &key_hook, f_map);
-		mlx_loop(f_map[0]->mlx);
+		mlx_hook(fdf->mlx_win, 2, 0, &key_hook, fdf);
+		mlx_loop(fdf->mlx);
 	}
+	return (0);
 }
