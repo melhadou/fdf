@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:05:02 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:15:09 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ typedef struct{
 	int	color;
 } t_point;
 
+/**
+	* Map of points Struct
+	*/
 typedef struct {
 	t_point **p;
 } t_map;
 
 /**
-	* Map Struct
+	* Fdf Struct
 	*/
 typedef struct {
 	void	*mlx;

@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:10:11 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/06 01:11:52 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int_array *split_line(char *line)
 		res->arr[i] = ft_atoi(sp_line[i]);
 		i++;
 	}
+	// dprintf(1,"%d",res->arr[0]);
 	return res;
 }
 
@@ -71,33 +72,28 @@ t_fdf *final_map(int_array **map)
 	len = 0;
 	while (map[len])
 		len++;
-
-	res = malloc((len + 1) * sizeof(t_fdf *));
+	res = malloc(sizeof(t_fdf));
 	if (!res)
 		return NULL;
 
-	while (i < len)
-	{
-		res = malloc(sizeof(t_fdf));
-		if (!res)
-		{
-			free(res);
-			return NULL;
-		}
-		i++;
-	}
-
 	res->row = len;
 	res->col = map[0]->size;
-	i = 0;	
+	i = 0;
 	
-	res->map = malloc((res->col + 1) * sizeof(t_map));
+	res->map = malloc(res->col * sizeof(t_map *));
+	if (!res->map)
+	{
+		free(res);
+		return NULL;
+	}
+
 	while (i < res->row)
 	{
 		len = 0;
 		res->map[i].p = malloc((res->col + 1) * sizeof(t_point *));
 		if (!res->map[i].p)
 		{
+			free(res->map);
 			free(res);
 			return NULL;
 		}
@@ -106,8 +102,8 @@ t_fdf *final_map(int_array **map)
 			res->map[i].p[len] = malloc(sizeof(t_point));
 			if (!res->map[i].p[len])
 			{
-				printf("hello");
 				free(res->map[i].p);
+				free(res->map);
 				free(res);
 				return NULL;
 			}

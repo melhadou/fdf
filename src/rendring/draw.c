@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 04:52:43 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:40:51 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	bresenham(t_fdf *fdf, t_point start, t_point end)
 	while (1)
 	{
 		// Centring the points
-		my_mlx_pixel_put(fdf->img, x + fdf->div_x + (WINDOW_WIDTH / 2), y + fdf->div_y + (WINDOW_HEIGHT / 2), color);
+		my_mlx_pixel_put(fdf->img, x + fdf->div_x + (int)(WINDOW_WIDTH / 2), y + fdf->div_y + (int)(WINDOW_HEIGHT / 2), color);
 		if (x == (int)end.x && y == (int)end.y)
 			break;
 		e2 = 2 * err;
@@ -107,6 +107,7 @@ void rendring(t_fdf *fdf)
 		x = 1;
 		while (x < fdf->col)
 		{
+			dprintf(1,"%f",fdf->map[y - 1].p[x - 1]->x);
 			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y - 1].p[x]);
 			bresenham(fdf, *fdf->map[y].p[x - 1], *fdf->map[y].p[x]);
 

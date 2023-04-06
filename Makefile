@@ -1,5 +1,6 @@
 NAME = fdf 
 CC = cc 
+CFLAGS = -g3 -fsanitize=address
 
 LIBFT = libs/libft
 MLX = libs/minilibx_macos
@@ -32,7 +33,6 @@ NC=\033[0m
 all :  libft gnl mlx $(NAME)
 	@echo "${BCYAN}Successfully Completed ${NC}"
 
-CFLAGS = -g -fsanitize=address
 debug : $(NAME)
 
 libft:
@@ -46,10 +46,10 @@ gnl:
 	@cd $(GNL) && make
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -framework AppKit -g3 -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -framework AppKit -o $(NAME)
 
 %.o: %.c
-	$(CC) $(INCLUDES) -c $< -g3 -o $@
+	$(CC)  $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean :
 	$(RM) $(OBJ)

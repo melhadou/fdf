@@ -6,11 +6,12 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:03:57 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/06 01:16:57 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
 
 int    ft_zome(t_fdf *fdf)
 {
@@ -59,10 +60,9 @@ int	main(int argc, char *argv[])
 		fdf->mlx_win = mlx_new_window(fdf->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
 		fdf->img->img = mlx_new_image(fdf->mlx,WINDOW_WIDTH, WINDOW_HEIGHT);
 		fdf->img->addr = mlx_get_data_addr(fdf->img->img, &fdf->img->bits_per_pixel, &fdf->img->line_length, &fdf->img->endian);
-
+		fdf->zoom = ft_zome(fdf);
 		fdf->div_x = 0;
 		fdf->div_y = 0;
-		fdf->zoom = ft_zome(fdf);
 
 		rendring(fdf);
 

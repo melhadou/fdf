@@ -6,12 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 00:32:42 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:08:50 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:31:23 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 float sc(t_fdf *fdf)
 {

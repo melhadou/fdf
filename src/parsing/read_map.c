@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/03/07 17:32:22 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/05 05:31:40 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ char **append_to_arr(char **map, char *line)
 	else
 		ret_map = malloc((arr_len(map) + 2) * sizeof(char *));
 	if (map)
+	{
 		while(map[i])
 		{
 			ret_map[i] = map[i];
 			i++;
 		}
+	}
 	ret_map[i] = line;
 	ret_map[i + 1] = NULL;
 	if (map)
@@ -57,8 +59,15 @@ char **read_map(int fd)
 	line = NULL;
 
 	line = get_next_line(fd);
+	if (!line)
+	{
+		printf("File Does Not Or its an empty file\n");
+		return (NULL);
+	}
+
 	while(line)
 	{
+		dprintf(1,"prin %s \n",line);
 		map = append_to_arr(map, line);
 		line = get_next_line(fd);
 	}
