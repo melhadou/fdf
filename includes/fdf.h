@@ -6,13 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/07 02:57:41 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:17:47 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "../libs/minilibx_macos/mlx.h"
+# include "mlx.h"
 # include "../libs/getnextline/get_next_line.h"
 # include "../libs/libft/libft.h"
 # include	<stdlib.h> 
