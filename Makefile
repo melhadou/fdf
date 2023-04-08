@@ -1,7 +1,7 @@
 NAME = fdf 
 CC = cc 
-CFLAGS = -g3 -fsanitize=address
-
+# CFLAGS = -g3 -fsanitize=address 
+CFLAGS =
 LIBFT = libs/libft
 MLX = libs/minilibx_macos
 GNL = libs/getnextline

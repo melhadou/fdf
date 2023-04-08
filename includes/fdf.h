@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:15:09 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:57:41 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_data {
 /**
 	* Array with size
 	*/
+
 typedef struct{
 	int	*arr;
 	size_t	size;
@@ -72,7 +73,6 @@ typedef struct {
 	void	*mlx;
 	void	*mlx_win;
 	t_data	*img;
-	t_point	**p;
 	t_map	*map;
 	size_t	col;
 	size_t	row;

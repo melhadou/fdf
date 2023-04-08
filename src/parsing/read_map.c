@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:31:40 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:04:50 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,27 @@ char **append_to_arr(char **map, char *line)
 	if (!line)
 		return NULL;
 	if (!map)
-		ret_map = malloc(2 * sizeof(char *));
-	else
-		ret_map = malloc((arr_len(map) + 2) * sizeof(char *));
-	if (map)
 	{
-		while(map[i])
-		{
-			ret_map[i] = map[i];
-			i++;
-		}
+		map = malloc(sizeof(char *));
+		*map = NULL;
+	}
+	ret_map = malloc((arr_len(map) + 2) * sizeof(char *));
+	while(map[i])
+	{
+		ret_map[i] = ft_strdup(map[i]);
+		i++;
 	}
 	ret_map[i] = line;
 	ret_map[i + 1] = NULL;
-	if (map)
-		free(map);
+	
+	// fr_free hnaa 
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 	return ret_map;
 }
 
@@ -56,7 +62,6 @@ char **read_map(int fd)
 	char *line;
 
 	map = NULL;
-	line = NULL;
 
 	line = get_next_line(fd);
 	if (!line)
@@ -67,7 +72,7 @@ char **read_map(int fd)
 
 	while(line)
 	{
-		dprintf(1,"prin %s \n",line);
+		// dprintf(1,"prin %s \n",line);
 		map = append_to_arr(map, line);
 		line = get_next_line(fd);
 	}

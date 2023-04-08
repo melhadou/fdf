@@ -6,11 +6,20 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/06 01:11:52 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 01:13:29 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void ft_frees(int_array **p)
+{
+	int i;
+	i = -1;
+	while (p[++i])
+		free(p[i]);
+	free(p);
+}
 
 int_array *split_line(char *line)
 {
@@ -36,6 +45,13 @@ int_array *split_line(char *line)
 		i++;
 	}
 	// dprintf(1,"%d",res->arr[0]);
+	i = 0;
+	while (sp_line[i])
+	{
+		free(sp_line[i]);
+		i++;
+	}
+	free(sp_line);
 	return res;
 }
 

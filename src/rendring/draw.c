@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:40:51 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 00:59:27 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void rendring(t_fdf *fdf)
 		x = 1;
 		while (x < fdf->col)
 		{
-			dprintf(1,"%f",fdf->map[y - 1].p[x - 1]->x);
+			// dprintf(1,"%f",fdf->map[y - 1].p[x - 1]->x);
 			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y - 1].p[x]);
 			bresenham(fdf, *fdf->map[y].p[x - 1], *fdf->map[y].p[x]);
 
