@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/06 01:16:57 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:30:09 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	else
 	{
 		int fd;
-		int_array **i_map;
+		t_int **i_map;
 		char **map;
 		t_fdf *fdf;
 		fd = open(argv[1],O_RDONLY);

@@ -6,13 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/08 01:13:29 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:29:46 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void ft_frees(int_array **p)
+void ft_frees(t_int **p)
 {
 	int i;
 	i = -1;
@@ -21,14 +21,14 @@ void ft_frees(int_array **p)
 	free(p);
 }
 
-int_array *split_line(char *line)
+t_int *split_line(char *line)
 {
-	int_array *res;
+	t_int *res;
 	char **sp_line;
 	int i;
 
 	i = 0;
-	res = malloc(sizeof(int_array));
+	res = malloc(sizeof(t_int));
 	if(!res)
 		return NULL;
 	sp_line = ft_split(line, ' ');
@@ -55,9 +55,9 @@ int_array *split_line(char *line)
 	return res;
 }
 
-int_array **parse_map(char **map)
+t_int **parse_map(char **map)
 {
-	int_array **ret_fdf;
+	t_int **ret_fdf;
 	size_t len;
 	size_t i;
 
@@ -65,7 +65,7 @@ int_array **parse_map(char **map)
 	if(!map)
 		return NULL;
 	len = arr_len(map);
-	ret_fdf = malloc((len + 1) * sizeof(int_array *));
+	ret_fdf = malloc((len + 1) * sizeof(t_int *));
 	if (!ret_fdf)
 		return NULL;
 	while (map[i])
@@ -78,7 +78,7 @@ int_array **parse_map(char **map)
 	return ret_fdf;
 }
 
-t_fdf *final_map(int_array **map)
+t_fdf *final_map(t_int **map)
 {
 	t_fdf *res;
 	size_t len;
