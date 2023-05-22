@@ -15,7 +15,7 @@ PARSING_DIR = $(SRC_DIR)parsing/
 PARSING_FILES = read_map.c parse.c check_overflow.c
 
 RENDRING_DIR = $(SRC_DIR)rendring/
-RENDRING_FILES = draw.c resize.c
+RENDRING_FILES = draw.c resize.c events.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(PARSING_DIR), $(PARSING_FILES))

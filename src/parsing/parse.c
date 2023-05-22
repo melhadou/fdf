@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/08 15:29:46 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:13:16 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_fdf *final_map(t_int **map)
 				free(res);
 				return NULL;
 			}
-			to_Isometric(i, len, map[i]->arr[len], res->map[i].p[len]);
+			to_isometric(i, len, map[i]->arr[len], res->map[i].p[len]);
 			len++;
 		}
 		res->map[i].p[len] = NULL;

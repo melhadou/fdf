@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/08 15:38:17 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:19:23 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,20 @@
 # define PLUS_KEY 69
 # define MINUS_KEY 78
 
+/**
+ * Iamge struct
+ * b == bits per pixel
+ * l == line length
+ * e = endian
+ * i = image
+ * a = addr
+ */
 typedef struct t_data
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_lenght;
 	int		endian;
 }	t_data;
 
@@ -110,6 +118,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 // drawing functions
 void	rendring(t_fdf *fdf);
 void	bresenham(t_fdf *fdf, t_point start, t_point end);
-void	to_Isometric(int x, int y, int z, t_point *p);
+void	to_isometric(int x, int y, int z, t_point *p);
+int		get_vals(t_point end, t_point start);
 
 #endif // FDF_H
