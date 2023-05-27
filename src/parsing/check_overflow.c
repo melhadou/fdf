@@ -6,12 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 00:32:42 by melhadou          #+#    #+#             */
-/*   Updated: 2023/04/05 05:31:23 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:08:03 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/*
 float sc(t_fdf *fdf)
 {
 	int x_max;
@@ -58,3 +59,4 @@ float sc(t_fdf *fdf)
 	printf("x ==> max --> %d\t min --> %d,\t distance = %d ,\t scale -> %f \n",x_max,x_min,x_max - x_min,x_scale);
 	return (fmin(y_scale,x_scale));
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/22 19:19:23 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/05/27 21:16:51 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,19 @@
 # define PLUS_KEY 69
 # define MINUS_KEY 78
 
+typedef struct t_bresenham
+{
+	int color;
+	int dx;
+	int dy;
+	int x;
+	int y;
+	int sx;
+	int sy;
+	int err;
+	int e2;
+} t_bresenham;
+
 /**
  * Iamge struct
  * b == bits per pixel
@@ -61,7 +74,6 @@ typedef struct t_data
 /**
 	* Array with size
 	*/
-
 typedef struct t_int
 {
 	int		*arr;
@@ -109,6 +121,8 @@ t_int	*split_line(char *line);
 t_int	**parse_map(char **map);
 t_fdf	*final_map(t_int **map);
 size_t	arr_len(char **arr);
+
+// unused fucntions
 void	resize_map(t_fdf *fdf);
 
 // mlx related functions
@@ -120,5 +134,7 @@ void	rendring(t_fdf *fdf);
 void	bresenham(t_fdf *fdf, t_point start, t_point end);
 void	to_isometric(int x, int y, int z, t_point *p);
 int		get_vals(t_point end, t_point start);
+void	bers_two(t_bresenham *bres);
+void	bers_init(t_bresenham *bres, t_point *start, t_point *end);
 
 #endif // FDF_H

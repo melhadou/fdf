@@ -6,90 +6,25 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/22 19:21:39 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/05/27 16:35:09 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	bresenham(t_fdf *fdf, t_point start, t_point end)
-{
-	int color;
-	int dx;
-	int dy;
-	int x;
-	int y;
-	int sx;
-	int sy;
-	int err;
-	int e2;
-
-	start.x *= fdf->zoom;
-	start.y *= fdf->zoom;
-	end.x *= fdf->zoom;
-	end.y *= fdf->zoom;
-	
-	color = get_vals(end, start);
-	
-	dx = abs((int)end.x - (int)start.x);
-	dy = abs((int)end.y - (int)start.y);
-
-	x = (int)start.x;
-	y = (int)start.y;
-
-	sx = -1;
-	sy = -1;
-	if (start.x < end.x)
-		sx = 1;
-	if (start.y < end.y)
-		sy = 1;
-	err = dx - dy;
-	 
-	while (1)
-	{
-		// Centring the points
-		my_mlx_pixel_put(fdf->img, x + fdf->div_x + (int)(WINDOW_WIDTH / 2),
-									 	y + fdf->div_y + (int)(WINDOW_HEIGHT / 2), color);
-		if (x == (int)end.x && y == (int)end.y)
-			break;
-		e2 = 2 * err;
-		if (e2 > -dy)
-		{
-			err -= dy;
-			x += sx;
-		}
-		if (e2 < dx)
-		{
-			err += dx;
-			y += sy;
-		}
-	}
-}
-
-int	get_vals(t_point end, t_point start)
-{
-	int	color;
-
-	color = WHITE;
-	if (end.color == RED || start.color == RED)
-		color = RED;
-	if (end.color == RED && start.color == RED)
-		color = GREEN;
-	return (color);
-}
-
+// normed
 void	to_isometric(int x, int y, int z, t_point *p)
 {
 	p->color = WHITE;
 	if (z != 0)
 		p->color = RED;
-	p->x = (y - x) * cos(0.5);
-	p->y = (x + y) * sin(0.5) - z;
+	p->x = (y - x) * cos(0.45);
+	p->y = (x + y) * sin(0.45) - z;
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char	*dst;
+	char		*dst;
 
 	if (x <= 0 || x >= WINDOW_WIDTH)
 		return ;
