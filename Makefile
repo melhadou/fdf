@@ -23,6 +23,8 @@ UTILS_FILES = utils.c
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(PARSING_DIR), $(PARSING_FILES))
 CFILES += $(addprefix $(RENDRING_DIR), $(RENDRING_FILES))
+CFILES += $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
 RM = rm -rf 
 OBJ = $(CFILES:%.c=%.o)
 
@@ -54,14 +56,12 @@ clean :
 	$(RM) $(OBJ)
 	@cd $(LIBFT) && make clean
 	@cd $(GNL) && make clean
-	@clear
 	@echo "${BRED}Successfully Cleaned ${NC}"
 
 fclean : clean
 	$(RM) $(NAME)
 	@cd $(LIBFT) && make fclean
 	@cd $(GNL) && make fclean
-	@clear
 	@echo "${BRED}Successfully Cleaned using Fclean ${NC}"
 
 re: fclean all
