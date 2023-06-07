@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/27 21:16:51 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:07:39 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ typedef struct t_data
 /**
 	* Array with size
 	*/
-typedef struct t_int
+typedef struct t_double
 {
-	int		*arr;
+	double	*arr;
 	size_t	size;
-}	t_int;
+}	t_double;
 
 /**
 	* Point Struct
@@ -117,17 +117,26 @@ typedef struct t_fdf
 // reading from map and parsing
 char	**append_to_arr(char **map, char *line);
 char	**read_map(int fd);
-t_int	*split_line(char *line);
-t_int	**parse_map(char **map);
-t_fdf	*final_map(t_int **map);
+t_double	*split_line(char *line);
+t_double	**parse_map(char **map);
+
+t_fdf	*allocate_memory(size_t row, size_t col);
+int		populate_map(t_fdf *res, t_double **map);
+t_fdf	*final_map(t_double **map);
+
 size_t	arr_len(char **arr);
 
 // unused fucntions
 void	resize_map(t_fdf *fdf);
 
 // mlx related functions
+int	destroy_win();
 int		key_hook(int key, t_fdf *fdf);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// utils
+int	ft_zome(t_fdf *fdf);
+void	free_fdf(t_fdf *res);
 
 // drawing functions
 void	rendring(t_fdf *fdf);

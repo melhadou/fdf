@@ -6,27 +6,23 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/27 16:04:40 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:07:41 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	* 	BUG: 	fdf cant read from a file with only one line
+	 
+	* 	TODO: 		huge refactore of code
+
+	* 	NOTE: 		use float instead of int => task 1 === DONE
+	
+	*		WARNING:	z scale should be smaller, dvided by a number === DONE
+
+*/
+
 #include "fdf.h"
-
-int	ft_zome(t_fdf *fdf)
-{
-	int    nbx;
-	int    nby;
-	int    zome;
-
-	nbx = 0;
-	nby = 0;
-	while (nbx * fdf->col < WINDOW_WIDTH)
-		nbx++;
-	while (nby * fdf->row < WINDOW_HEIGHT)
-		nby++;
-	zome = (nbx + nby) / 6 + 1;
-	return (zome);
-}
+#include "mlx.h"
 
 int	main(int argc, char *argv[])
 {
@@ -38,7 +34,7 @@ int	main(int argc, char *argv[])
 	else
 	{
 		int fd;
-		t_int **i_map;
+		t_double **i_map;
 		char **map;
 		t_fdf *fdf;
 		fd = open(argv[1],O_RDONLY);
@@ -66,6 +62,7 @@ int	main(int argc, char *argv[])
 		rendring(fdf);
 
 		mlx_hook(fdf->mlx_win, 2, 0, &key_hook, fdf);
+		mlx_hook(fdf->mlx_win, 17, 0, &destroy_win, fdf);
 		mlx_loop(fdf->mlx);
 	}
 	return (0);

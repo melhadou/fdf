@@ -6,13 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:19:14 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/06 15:16:21 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:06:32 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_frees(t_int **p)
+void	ft_frees(t_double **p)
 {
 	int	i;
 
@@ -43,24 +43,24 @@ void	free_fdf(t_fdf *res)
 	free(res);
 }
 
-int	check_file_extension(char *file_name)
-{
-	int i;
-	int len;
+// int	check_file_extension(char *file_name)
+// {
+// 	int i;
+// 	int len;
 
-	if (!file_name)
-		return (0);
-	i = 0;
-	len = ft_strlen(file_name);
-	while (file_name[len] && i != 4)
-	{
-		if (ft_strcmp(".fdf", ft_substr(file_name, len - 4, 4)))
-			return (1);
-		i++;
-		len--;
-	}
-	return (1);
-}
+// 	if (!file_name)
+// 		return (0);
+// 	i = 0;
+// 	len = ft_strlen(file_name);
+// 	while (file_name[len] && i != 4)
+// 	{
+// 		if (ft_strcmp(".fdf", ft_substr(file_name, len - 4, 4)))
+// 			return (1);
+// 		i++;
+// 		len--;
+// 	}
+// 	return (1);
+// }
 
 int	ft_zome(t_fdf *fdf)
 {

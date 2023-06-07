@@ -65,3 +65,5 @@ fclean : clean
 	@echo "${BRED}Successfully Cleaned using Fclean ${NC}"
 
 re: fclean all
+
+.PHONY: all libft gnl clean fclean re

@@ -6,15 +6,17 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:28:17 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/27 14:49:08 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:07:37 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 // normed
 int	key_hook(int key, t_fdf *fdf)
 {
+	dprintf(1 , "key %d",key);
 	if (key == 53)
 		exit(1);
 	else if (key == UP_KEY)
@@ -36,5 +38,11 @@ int	key_hook(int key, t_fdf *fdf)
 			&fdf->img->line_lenght,
 			&fdf->img->endian);
 	rendring(fdf);
+	return (0);
+}
+
+int	destroy_win()
+{
+		exit(1);
 	return (0);
 }

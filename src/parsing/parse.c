@@ -6,26 +6,27 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/03 16:23:11 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:38:06 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // normed but with func more then 25
-t_int	*split_line(char *line)
+
+t_double	*split_line(char *line)
 {
-	t_int	*res;
-	char	**sp_line;
-	int		i;
+	t_double	*res;
+	char		**sp_line;
+	int			i;
 
 	i = 0;
-	res = malloc(sizeof(t_int));
+	res = (t_double *)malloc(sizeof(t_double));
 	if (!res)
 		return (NULL);
 	sp_line = ft_split(line, ' ');
 	res->size = arr_len(sp_line);
-	res->arr = malloc(res->size * sizeof(int));
+	res->arr = (double *)malloc(res->size * sizeof(double));
 	if (!res->arr)
 	{
 		free(res);
@@ -33,16 +34,17 @@ t_int	*split_line(char *line)
 	}
 	while (sp_line[i])
 	{
-		res->arr[i] = ft_atoi(sp_line[i]);
+		res->arr[i] = (double)ft_atoi(sp_line[i]);
 		i++;
 	}
 	ft_free(sp_line);
 	return (res);
 }
 
-t_int	**parse_map(char **map)
+#include <stdio.h>
+t_double	**parse_map(char **map)
 {
-	t_int		**ret_fdf;
+	t_double	**ret_fdf;
 	size_t		len;
 	size_t		i;
 
@@ -50,7 +52,7 @@ t_int	**parse_map(char **map)
 	if (!map)
 		return (NULL);
 	len = arr_len(map);
-	ret_fdf = malloc((len + 1) * sizeof(t_int *));
+	ret_fdf = (t_double **)malloc((len + 1) * sizeof(t_double *));
 	if (!ret_fdf)
 		return (NULL);
 	while (map[i])
@@ -63,7 +65,7 @@ t_int	**parse_map(char **map)
 }
 
 // NOTE: need to be understood
-// BUG: should be normed
+// WARNING: should be normed
 t_fdf	*allocate_memory(size_t row, size_t col)
 {
 	t_fdf	*res;
@@ -82,7 +84,7 @@ t_fdf	*allocate_memory(size_t row, size_t col)
 	return (res);
 }
 
-int	populate_map(t_fdf *res, t_int **map)
+int	populate_map(t_fdf *res, t_double **map)
 {
 	size_t	i;
 	size_t	j;
@@ -102,7 +104,7 @@ int	populate_map(t_fdf *res, t_int **map)
 				free_fdf(res);
 				return (0);
 			}
-			to_isometric(i, j, map[i]->arr[j], res->map[i].p[j]);
+			to_isometric(i, j, map[i]->arr[j] * 0.1, res->map[i].p[j]);
 			j++;
 		}
 		res->map[i].p[j] = NULL;
@@ -112,7 +114,7 @@ int	populate_map(t_fdf *res, t_int **map)
 	return (1);
 }
 
-t_fdf	*final_map(t_int **map)
+t_fdf	*final_map(t_double **map)
 {
 	t_fdf	*res;
 	size_t	len;

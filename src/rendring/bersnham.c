@@ -6,11 +6,12 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:34:29 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/27 17:04:03 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 14:29:50 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
+#include <stdio.h>
 
 // normed
 void	bresenham(t_fdf *fdf, t_point start, t_point end)
