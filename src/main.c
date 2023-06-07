@@ -6,15 +6,13 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/07 17:07:41 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:14:56 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 	* 	BUG: 	fdf cant read from a file with only one line
 	 
-	* 	TODO: 		huge refactore of code
-
 	* 	NOTE: 		use float instead of int => task 1 === DONE
 	
 	*		WARNING:	z scale should be smaller, dvided by a number === DONE
