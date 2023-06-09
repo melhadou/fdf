@@ -6,12 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/07 16:38:06 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:19:20 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 // normed but with func more then 25
 
 t_double	*split_line(char *line)
@@ -104,7 +103,7 @@ int	populate_map(t_fdf *res, t_double **map)
 				free_fdf(res);
 				return (0);
 			}
-			to_isometric(i, j, map[i]->arr[j] * 0.1, res->map[i].p[j]);
+			to_isometric(i, j, map[i]->arr[j], res->map[i].p[j]);
 			j++;
 		}
 		res->map[i].p[j] = NULL;

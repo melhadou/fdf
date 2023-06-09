@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/07 16:37:37 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:21:20 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	to_isometric(int x, int y, int z, t_point *p)
 	p->color = WHITE;
 	if (z != 0)
 		p->color = RED;
+	if (z > 2 || z < 0)
+		z *= 0.1;
 	p->x = (y - x) * cos(0.45);
 	p->y = (x + y) * sin(0.45) - z;
 }
