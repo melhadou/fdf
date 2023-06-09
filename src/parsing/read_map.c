@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/05/27 17:35:23 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:15:32 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**read_map(int fd)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		printf("File Does Not Exist Or its an empty file\n");
+		ft_printf("File Does Not Exist Or its an empty file\n");
 		return (NULL);
 	}
 	while (line)

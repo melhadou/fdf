@@ -18,6 +18,7 @@ BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_
 MAN=$(MANDATORY:%.c=%.o)
 BON=$(BONUS:%.c=%.o)
 
+# Defaulte Target
 all: $(NAME)
 
 $(NAME): $(MAN)
@@ -26,7 +27,7 @@ bonus: $(MAN) $(BON)
 
 %.o:%.c
 	$(CC) $(CFLAGS) $<
-	@ar -rc $(NAME) $@
+	ar -rc $(NAME) $@
 
 clean:
 	$(RM) *.o

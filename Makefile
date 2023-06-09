@@ -4,9 +4,10 @@ CC = cc  -Wall -Wextra -Werror
 CFLAGS =
 LIBFT = libs/libft
 GNL = libs/getnextline
+FT_PRINTF = libs/ft_printf
 
 INCLUDES = -Iincludes 
-LIBS = $(addprefix $(GNL), /gnl.a) $(addprefix $(LIBFT), /libft.a)
+LIBS = $(addprefix $(GNL), /gnl.a) $(addprefix $(LIBFT), /libft.a) $(addprefix $(FT_PRINTF), /libftprintf.a)
 
 SRC_DIR = src/
 SRC_FILES = main.c
@@ -34,7 +35,7 @@ BCYAN=\033[1;36m
 BYELLOW=\033[1;33m
 NC=\033[0m
 
-all :  libft gnl $(NAME)
+all :  libft ft_printf gnl $(NAME)
 	@echo "${BCYAN}Successfully Completed ${NC}"
 
 debug : $(NAME)
@@ -45,6 +46,9 @@ libft:
 gnl: 
 	@echo "${BYELLOW}Making getnextline ${NC}"
 	@cd $(GNL) && make
+ft_printf:
+	@echo "${BYELLOW}Making Ft_printf ${NC}"
+	@cd $(FT_PRINTF) && make
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -lmlx -framework AppKit -o $(NAME)
@@ -55,12 +59,14 @@ $(NAME): $(OBJ)
 clean :
 	$(RM) $(OBJ)
 	@cd $(LIBFT) && make clean
+	@cd $(FT_PRINTF) && make clean
 	@cd $(GNL) && make clean
 	@echo "${BRED}Successfully Cleaned ${NC}"
 
 fclean : clean
 	$(RM) $(NAME)
 	@cd $(LIBFT) && make fclean
+	@cd $(FT_PRINTF) && make fclean
 	@cd $(GNL) && make fclean
 	@echo "${BRED}Successfully Cleaned using Fclean ${NC}"
 

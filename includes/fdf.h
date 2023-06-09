@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/07 17:07:39 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:09:25 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // used headers
 # include "mlx.h"
 # include "../libs/getnextline/get_next_line.h"
+# include "../libs/ft_printf/ft_printf.h"
 # include "../libs/libft/libft.h"
 # include	<stdlib.h> 
 # include <stdio.h>

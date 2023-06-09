@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 15:44:48 by melhadou          #+#    #+#             */
-/*   Updated: 2022/11/20 18:18:13 by melhadou         ###   ########.fr       */
+/*   Created: 2022/12/02 15:06:38 by melhadou          #+#    #+#             */
+/*   Updated: 2023/01/29 16:53:21 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putnbr(long nb, int *size)
 {
-	size_t	len;
-
-	len = 0;
-	while (str[len] != '\0')
+	if (nb < 0)
 	{
-			len++;
+		ft_putchar('-', size);
+		nb *= -1;
 	}
-	return (len);
+	if (nb > 9)
+		ft_putnbr(nb / 10, size);
+	ft_putchar(nb % 10 + '0', size);
+	return ;
 }

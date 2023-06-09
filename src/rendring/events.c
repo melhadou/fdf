@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:28:17 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/07 17:07:37 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:07:00 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // normed
 int	key_hook(int key, t_fdf *fdf)
 {
-	dprintf(1 , "key %d",key);
 	if (key == 53)
 		exit(1);
 	else if (key == UP_KEY)

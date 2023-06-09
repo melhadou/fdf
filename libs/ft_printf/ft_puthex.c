@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 15:44:48 by melhadou          #+#    #+#             */
-/*   Updated: 2022/11/20 18:18:13 by melhadou         ###   ########.fr       */
+/*   Created: 2022/12/02 15:06:32 by melhadou          #+#    #+#             */
+/*   Updated: 2022/12/19 12:34:22 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_puthex(unsigned long nb, int state, int *size)
 {
-	size_t	len;
+	char	*base;
 
-	len = 0;
-	while (str[len] != '\0')
+	if (state == 'x')
+		base = "0123456789abcdef";
+	else if (state == 'X')
+		base = "0123456789ABCDEF";
+	if (nb > 15)
 	{
-			len++;
+		ft_puthex(nb / 16, state, size);
+		ft_putchar(base[nb % 16], size);
 	}
-	return (len);
+	else
+		ft_putchar(base[nb % 16], size);
+	return ;
 }
