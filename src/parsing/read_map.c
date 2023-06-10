@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:52:12 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:01:31 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,46 @@ char	**read_map(int fd)
 	{
 		if (!line || ft_strlen(line) == 1)
 		{
-			ft_printf("map contains empty lines\n");
+			ft_printf("Error on map: empty line\n");
 			return (NULL);
 		}
 		map = append_to_arr(map, line);
 		line = get_next_line(fd);
 	}
+	
+	if (!is_map_valid(map))
+	{
+		ft_printf("Error on map: invalid map\n");
+		return (NULL);
+	}
+	
 	return (map);
+}
+
+int	is_map_valid(char **map)
+{
+	size_t	first_line_len;
+	size_t	i;
+
+	if (!map)
+		return (0);
+
+	// Check the length of the first line
+	first_line_len = 0;
+	while (map[0][first_line_len])
+		first_line_len++;
+
+	// Check the length of each subsequent line
+	i = 1;
+	while (map[i])
+	{
+		size_t line_len = 0;
+		while (map[i][line_len])
+			line_len++;
+		if (line_len != first_line_len)
+			return (0);
+		i++;
+	}
+
+	return (1);
 }

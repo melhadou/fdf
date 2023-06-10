@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/10 15:03:46 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:00:07 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,9 +137,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 // utils
 int	ft_zome(t_fdf *fdf);
 void	free_fdf(t_fdf *res);
-
+t_double	**free_parsed_map(t_double **map);
+int	is_map_valid(char **map);
 // drawing functions
 void	rendring(t_fdf *fdf);
+void	rendring_one_row(t_fdf *fdf);
 void	bresenham(t_fdf *fdf, t_point start, t_point end);
 void	to_isometric(int x, int y, int z, t_point *p);
 int		get_vals(t_point end, t_point start);
