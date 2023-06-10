@@ -6,11 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:14:54 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:52:04 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
-	* 	BUG: 	fdf cant read from a file with only one line
+	* 	BUG:		 	fdf cant read from a file with only one line
 	 
 	* 	NOTE: 		use float instead of int => task 1 === DONE
 	

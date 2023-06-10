@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:21:20 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:09:21 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,26 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	rendring(t_fdf *fdf)
 {
-	size_t	x;
-	size_t	y;
+	size_t	i_col;
+	size_t	i_row;
 
-	y = 1;
-	x = 0;
+	i_row = 1;
+	i_col = 0;
 	mlx_clear_window(fdf->mlx, fdf->mlx_win);
-	while (y < fdf->row)
+	while (i_row < fdf->row)
 	{
-		x = 1;
-		while (x < fdf->col)
-		{
-			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y - 1].p[x]);
-			bresenham(fdf, *fdf->map[y].p[x - 1], *fdf->map[y].p[x]);
-
-			bresenham(fdf, *fdf->map[y - 1].p[x], *fdf->map[y].p[x]);
-			bresenham(fdf, *fdf->map[y - 1].p[x - 1], *fdf->map[y].p[x - 1]);
-			x++;
+		i_col = 1;
+		while (i_col < fdf->col)
+		{	
+			if (i_row + 1 == fdf->row)
+				bresenham(fdf, *fdf->map[i_row].p[i_col - 1], *fdf->map[i_row].p[i_col]);
+			bresenham(fdf, *fdf->map[i_row - 1].p[i_col - 1], *fdf->map[i_row - 1].p[i_col]);
+			if (i_col + 1 == fdf->col)
+				bresenham(fdf, *fdf->map[i_row].p[i_col],*fdf->map[i_row - 1].p[i_col]);
+			bresenham(fdf, *fdf->map[i_row].p[i_col - 1],*fdf->map[i_row - 1].p[i_col - 1]);
+			i_col++;
 		}
-		y++;
+		i_row++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->img->img, 0, 0);
 }
