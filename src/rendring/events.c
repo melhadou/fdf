@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:28:17 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:07:00 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:42:21 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	key_hook(int key, t_fdf *fdf)
 	return (0);
 }
 
-int	destroy_win()
+int	destroy_win(void)
 {
-		exit(1);
+	exit(1);
 	return (0);
 }

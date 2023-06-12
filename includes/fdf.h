@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/10 18:00:07 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:58:03 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@
 
 typedef struct t_bresenham
 {
-	int color;
-	int dx;
-	int dy;
-	int x;
-	int y;
-	int sx;
-	int sy;
-	int err;
-	int e2;
-} t_bresenham;
+	int	color;
+	int	dx;
+	int	dy;
+	int	x;
+	int	y;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+}	t_bresenham;
 
 /**
  * Iamge struct
@@ -85,8 +85,8 @@ typedef struct t_double
 	*/
 typedef struct t_point
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 	int		color;
 }	t_point;
 
@@ -115,37 +115,37 @@ typedef struct t_fdf
 }	t_fdf;
 
 // reading from map and parsing
-char	**append_to_arr(char **map, char *line);
-char	**read_map(int fd);
-t_double	*split_line(char *line);
-t_double	**parse_map(char **map);
-
-t_fdf	*allocate_memory(size_t row, size_t col);
-int		populate_map(t_fdf *res, t_double **map);
-t_fdf	*final_map(t_double **map);
-
-size_t	arr_len(char **arr);
+int			populate_map(t_fdf *res, t_double **map);
+size_t		arr_len(char **arr);
+char		**append_to_arr(char **map, char *line);
+char		**read_map(int fd);
+t_fdf		*allocate_memory(size_t row, size_t col);
+t_fdf		*final_map(t_double **map);
+t_double	**parse_map(char	**map);
+t_double	**free_parsed_map(t_double	**map);
+t_double	*split_line(char	*line);
 
 // unused fucntions
-void	resize_map(t_fdf *fdf);
+void		resize_map(t_fdf *fdf);
 
 // mlx related functions
-int	destroy_win();
-int		key_hook(int key, t_fdf *fdf);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			destroy_win(void);
+int			key_hook(int key, t_fdf *fdf);
+int			destroy_win(void);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 // utils
-int	ft_zome(t_fdf *fdf);
-void	free_fdf(t_fdf *res);
-t_double	**free_parsed_map(t_double **map);
-int	is_map_valid(char **map);
-// drawing functions
-void	rendring(t_fdf *fdf);
-void	rendring_one_row(t_fdf *fdf);
-void	bresenham(t_fdf *fdf, t_point start, t_point end);
-void	to_isometric(int x, int y, int z, t_point *p);
-int		get_vals(t_point end, t_point start);
-void	bers_two(t_bresenham *bres);
-void	bers_init(t_bresenham *bres, t_point *start, t_point *end);
+int			ft_zome(t_fdf *fdf);
+int			free_fdf(t_fdf *res);
+int			is_map_valid(char **map);
+void		ft_free_t_double(t_double *p);
 
+// drawing functions
+void		rendring(t_fdf *fdf);
+void		rendring_one_row(t_fdf *fdf);
+void		bresenham(t_fdf *fdf, t_point start, t_point end);
+void		to_isometric(double x, double y, double z, t_point *p);
+int			get_vals(t_point end, t_point start);
+void		bers_two(t_bresenham *bres);
+void		bers_init(t_bresenham *bres, t_point *start, t_point *end);
 #endif // FDF_H

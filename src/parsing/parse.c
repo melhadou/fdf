@@ -6,13 +6,12 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:30:53 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:19:20 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:35:05 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// normed but with func more then 25
-
+//normed
 t_double	*split_line(char *line)
 {
 	t_double	*res;
@@ -20,27 +19,26 @@ t_double	*split_line(char *line)
 	int			i;
 
 	i = 0;
-	res = (t_double *)malloc(sizeof(t_double));
+	res = malloc(sizeof(t_double));
 	if (!res)
 		return (NULL);
 	sp_line = ft_split(line, ' ');
 	res->size = arr_len(sp_line);
-	res->arr = (double *)malloc(res->size * sizeof(double));
+	res->arr = malloc(res->size * sizeof(double));
 	if (!res->arr)
 	{
-		free(res);
+		ft_free_t_double(res);
 		return (NULL);
 	}
 	while (sp_line[i])
 	{
-		res->arr[i] = (double)ft_atoi(sp_line[i]);
+		res->arr[i] = ft_atoi(sp_line[i]);
 		i++;
 	}
 	ft_free(sp_line);
 	return (res);
 }
 
-#include <stdio.h>
 t_double	**parse_map(char **map)
 {
 	t_double	**ret_fdf;
@@ -74,7 +72,7 @@ t_fdf	*allocate_memory(size_t row, size_t col)
 		return (NULL);
 	res->row = row;
 	res->col = col;
-	res->map = malloc(col * sizeof(t_map *));
+	res->map = malloc(col * sizeof(t_map *) + 1);
 	if (!res->map)
 	{
 		free_fdf(res);
@@ -99,11 +97,9 @@ int	populate_map(t_fdf *res, t_double **map)
 		{
 			res->map[i].p[j] = malloc(sizeof(t_point));
 			if (!res->map[i].p[j])
-			{
-				free_fdf(res);
-				return (0);
-			}
-			to_isometric(i, j, map[i]->arr[j], res->map[i].p[j]);
+				return (free_fdf(res));
+			to_isometric((double)i, (double)j, map[i]->arr[j], \
+								res->map[i].p[j]);
 			j++;
 		}
 		res->map[i].p[j] = NULL;
