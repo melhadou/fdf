@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:19:14 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/12 16:41:26 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:03:18 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,27 @@ void	ft_free_t_double(t_double *p)
 	free(p);
 }
 
-int	free_fdf(t_fdf *res)
-{
-	size_t	i;
-	size_t	len;
+// int	free_fdf(t_fdf *res)
+// {
+// 	size_t	i;
+// 	size_t	len;
 
-	i = 0;
-	while (i < res->row)
-	{
-		len = 0;
-		while (len < res->col)
-		{
-			free(res->map[i].p[len]);
-			len++;
-		}
-		free(res->map[i].p);
-		i++;
-	}
-	free(res->map);
-	free(res);
-	return (0);
-}
+// 	i = 0;
+// 	while (i < res->col)
+// 	{
+// 		len = 0;
+// 		while (len < res->line[i].row)
+// 		{
+// 			free(res->line[i][len].p);
+// 			len++;
+// 		}
+// 		free(res->line[i]->p);
+// 		i++;
+// 	}
+// 	free(res->line);
+// 	free(res);
+// 	return (0);
+// }
 
 // need to check file ending
 // int	check_file_extension(char *file_name)
@@ -64,7 +64,7 @@ int	free_fdf(t_fdf *res)
 // 	return (0);
 // }
 
-int	ft_zome(t_fdf *fdf)
+int	ft_zome(t_fdf fdf)
 {
 	int	nbx;
 	int	nby;
@@ -72,9 +72,9 @@ int	ft_zome(t_fdf *fdf)
 
 	nbx = 0;
 	nby = 0;
-	while (nbx * fdf->col < WINDOW_WIDTH)
+	while (nbx * fdf.col < WINDOW_WIDTH)
 		nbx++;
-	while (nby * fdf->row < WINDOW_HEIGHT)
+	while (nby * fdf.line[0].row < WINDOW_HEIGHT)
 		nby++;
 	zome = (nbx + nby) / 6 + 1;
 	return (zome);

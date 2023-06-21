@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:28:17 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/12 16:42:21 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:09:54 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	key_hook(int key, t_fdf *fdf)
 			&fdf->img->bits_per_pixel,
 			&fdf->img->line_lenght,
 			&fdf->img->endian);
-	rendring(fdf);
+	rendring(*fdf);
 	return (0);
 }
 

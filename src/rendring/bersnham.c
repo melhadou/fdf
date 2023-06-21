@@ -6,29 +6,28 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:34:29 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/12 15:50:36 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:10:53 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
-#include <stdio.h>
 
 // normed
-void	bresenham(t_fdf *fdf, t_point start, t_point end)
+void	bresenham(t_fdf fdf, t_point start, t_point end)
 {
 	t_bresenham	bres;
 
-	start.x *= fdf->zoom;
-	start.y *= fdf->zoom;
-	end.x *= fdf->zoom;
-	end.y *= fdf->zoom;
+	start.x *= fdf.zoom;
+	start.y *= fdf.zoom;
+	end.x *= fdf.zoom;
+	end.y *= fdf.zoom;
 	bres.color = get_vals(end, start);
 	bers_init(&bres, &start, &end);
 	while (1)
 	{
-		my_mlx_pixel_put(fdf->img,
-			bres.x + fdf->div_x + (int)(WINDOW_WIDTH / 2),
-			bres.y + fdf->div_y + (int)(WINDOW_HEIGHT / 2),
+		my_mlx_pixel_put(fdf.img,
+			bres.x + fdf.div_x + (int)(WINDOW_WIDTH / 2),
+			bres.y + fdf.div_y + (int)(WINDOW_HEIGHT / 2),
 			bres.color);
 		if (bres.x == (int)end.x && bres.y == (int)end.y)
 			break ;

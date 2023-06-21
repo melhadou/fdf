@@ -6,41 +6,44 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/12 16:41:33 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:21:40 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "fdf.h"
 
 // normed
-t_fdf	*fdf_init(int fd)
+t_fdf	fdf_init(int fd)
 {
-	t_fdf			*fdf;
+	t_fdf			fdf;
 	char			**map;
-	t_double		**i_map;
+	t_double		*i_map;
 
 	map = read_map(fd);
 	if (!map)
-		return (NULL);
+		exit(1);
 	i_map = parse_map(map);
-	fdf = final_map(i_map);
-	fdf->img = malloc(sizeof(t_data));
-	fdf->mlx = mlx_init();
-	fdf->mlx_win = mlx_new_window(fdf->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
-	fdf->img->img = mlx_new_image(fdf->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	fdf->img->addr = mlx_get_data_addr(fdf->img->img, \
-									&fdf->img->bits_per_pixel, \
-									&fdf->img->line_lenght, \
-									&fdf->img->endian);
-	fdf->zoom = ft_zome(fdf);
-	fdf->div_x = 0;
-	fdf->div_y = 0;
+	fdf = populate_fdf(i_map, arr_len(map));
+	ft_free(map);
+	// print_map(fdf);
+	fdf.img = malloc(sizeof(t_data));
+	fdf.mlx = mlx_init();
+	fdf.mlx_win = mlx_new_window(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FDF");
+	fdf.img->img = mlx_new_image(fdf.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	fdf.img->addr = mlx_get_data_addr(fdf.img->img, \
+									&fdf.img->bits_per_pixel, \
+									&fdf.img->line_lenght, \
+									&fdf.img->endian);
+	fdf.zoom = ft_zome(fdf);
+	fdf.div_x = 0;
+	fdf.div_y = 0;
 	return (fdf);
 }
 
 int	main(int argc, char *argv[])
 {
 	int			fd;
-	t_fdf		*fdf;
+	t_fdf		fdf;
 
 	if (argc != 2)
 	{
@@ -55,11 +58,17 @@ int	main(int argc, char *argv[])
 			ft_printf("could not open file %s\n", argv[1]);
 			return (1);
 		}
+		if (!check_file_extension(argv[1]))
+		{
+			ft_printf("invalid file extension\n");
+			return (1);
+		}
 		fdf = fdf_init(fd);
+		// print struct fdf elements
 		rendring(fdf);
-		mlx_hook(fdf->mlx_win, 2, 0, &key_hook, fdf);
-		mlx_hook(fdf->mlx_win, 17, 0, &destroy_win, fdf);
-		mlx_loop(fdf->mlx);
+		mlx_hook(fdf.mlx_win, 2, 0, &key_hook, &fdf);
+		mlx_hook(fdf.mlx_win, 17, 0, &destroy_win, &fdf);
+		mlx_loop(fdf.mlx);
 	}
 	return (0);
 }

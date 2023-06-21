@@ -1,7 +1,7 @@
 NAME = fdf 
-CC = cc  -Wall -Wextra -Werror
-# CFLAGS = -g3 -fsanitize=address 
-CFLAGS =
+CC = cc  -Wall -Wextra -Werror 
+CFLAGS = -g3 -fsanitize=address 
+# CFLAGS =
 LIBFT = libs/libft
 GNL = libs/getnextline
 FT_PRINTF = libs/ft_printf
@@ -13,13 +13,13 @@ SRC_DIR = src/
 SRC_FILES = main.c
 
 PARSING_DIR = $(SRC_DIR)parsing/
-PARSING_FILES = read_map.c parse.c
+PARSING_FILES = read_map.c parse.c fdf_alloc.c
 
 RENDRING_DIR = $(SRC_DIR)rendring/
 RENDRING_FILES = draw.c resize.c events.c bersnham.c
 
 UTILS_DIR = $(SRC_DIR)utils/
-UTILS_FILES = utils.c
+UTILS_FILES = utils.c check_map.c
 
 CFILES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 CFILES += $(addprefix $(PARSING_DIR), $(PARSING_FILES))
