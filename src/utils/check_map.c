@@ -6,42 +6,55 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:36:41 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/21 16:39:34 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:11:34 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// get content of map. 
-// splite lines of map
-// check every element in that map
-// free the line, 
-// every element should be float not int
 int	check_file_extension(char *file_name)
 {
-	int	fname_len;
+	int	len;
 
-	fname_len = ft_strlen(file_name);
-	if (file_name[fname_len - 5] == '/')
-		fname_len -= 5;
-	if (fname_len < 5)
-		return (0);
-	if (file_name[fname_len - 1] != 'f' || file_name[fname_len - 2] != 'd' \
-			|| file_name[fname_len - 3] != 'f' || file_name[fname_len - 4] != '.')
-		return (0);
-	return (1);
+	len = ft_strlen(file_name);
+	if (len > 4)
+	{
+		if (!ft_strcmp(&file_name[len - 4], ".fdf"))
+			return (1);
+	}
+	return (0);
 }
 
-// int check_map(t_double **map)
-// {
-// 	size_t	i;
-// 	size_t	j;
+int	open_file(char *file_name)
+{
+	int	fd;
 
-// 	i = 0;
-// 	j = 0;
-// 	if (!map)
-// 		return (0);
-// 	
-// 	while (map)
-// 	return (0);
-// }
+	fd = open(file_name, O_RDONLY);
+	if (fd == 0)
+	{
+		ft_printf("could not open file %s\n", file_name);
+		exit(1);
+	}
+	return (fd);
+}
+
+void	validate_map(t_double *map, size_t col)
+{
+	// loop over the map and check the number of rows. if its 1. on all over them return error
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < col)
+	{
+		j = 0;
+		while (j < map[i].size)
+			j++;
+		if (j < 2)
+		{
+			ft_printf("error: invalid map\n");
+			exit(1);
+		}
+		i++;
+	}
+}

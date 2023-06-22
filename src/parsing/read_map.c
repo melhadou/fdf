@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/17 22:45:12 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/22 08:28:02 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**append_to_arr(char **map, char *line)
 	}
 	ret_map[i] = line;
 	ret_map[i + 1] = NULL;
-	ft_free(map);
+	ft_free_string(map);
 	return (ret_map);
 }
 

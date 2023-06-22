@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:18:09 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/17 21:40:21 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:00:44 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_strcmp(const char *s1, const char *s2);
 void		ft_bzero(void *s, size_t n);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putendl_fd(char *s, int fd);

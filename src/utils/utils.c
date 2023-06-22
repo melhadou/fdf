@@ -6,63 +6,31 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:19:14 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/21 22:03:18 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:29:19 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_t_double(t_double *p)
+void	ft_free_t_double(t_double *p, size_t col)
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < col)
+		free(p[i].arr);
+	free(p);
+}
+
+void	ft_free_string(char **str)
 {
 	int	i;
 
 	i = -1;
-	while (p->arr[++i])
-		free(p->arr);
-	free(p);
+	while (str[++i])
+		free(str[i]);
+	free(str);
 }
-
-// int	free_fdf(t_fdf *res)
-// {
-// 	size_t	i;
-// 	size_t	len;
-
-// 	i = 0;
-// 	while (i < res->col)
-// 	{
-// 		len = 0;
-// 		while (len < res->line[i].row)
-// 		{
-// 			free(res->line[i][len].p);
-// 			len++;
-// 		}
-// 		free(res->line[i]->p);
-// 		i++;
-// 	}
-// 	free(res->line);
-// 	free(res);
-// 	return (0);
-// }
-
-// need to check file ending
-// int	check_file_extension(char *file_name)
-// {
-// 	int	i;
-// 	int	len;
-
-// 	if (!file_name)
-// 		return (0);
-// 	i = 0;
-// 	len = ft_strlen(file_name);
-// 	while (file_name[len] && i != 4)
-// 	{
-// 		if (ft_strncmp(".fdf", ft_substr(file_name, len - 4, 4), 4))
-// 			return (0);
-// 		i++;
-// 		len--;
-// 	}
-// 	return (0);
-// }
 
 int	ft_zome(t_fdf fdf)
 {
@@ -93,4 +61,32 @@ t_double	**free_parsed_map(t_double **map)
 	}
 	free(map);
 	return (NULL);
+}
+
+int	diff_min_max_z(t_double *map, size_t col)
+{
+	size_t	i;
+	size_t	j;
+	double	min;
+	double	max;
+
+	i = 0;
+	min = map[0].arr[0];
+	max = map[0].arr[0];
+	while (i < col)
+	{
+		j = 0;
+		while (j < map[i].size)
+		{
+			if (map[i].arr[j] < min)
+				min = map[i].arr[j];
+			if (map[i].arr[j] > max)
+				max = map[i].arr[j];
+			j++;
+		}
+		i++;
+	}
+	if (max - min == 0)
+		return (1);
+	return (max - min);
 }

@@ -1,6 +1,6 @@
 NAME = fdf 
 CC = cc  -Wall -Wextra -Werror 
-CFLAGS = -g3 -fsanitize=address 
+# CFLAGS = -g3 -fsanitize=address 
 # CFLAGS =
 LIBFT = libs/libft
 GNL = libs/getnextline
