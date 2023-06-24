@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:36:41 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 10:57:34 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:49:36 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_map_alpha(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (!ft_isdigit(map[i][j]) && map[i][j] != '/' && map[i][j] != '*')
+			if (!ft_isdigit(map[i][j]) && !ft_isascii(map[i][j]))
 			{
 				ft_printf("Error on map: Invalid characters\n");
 				return (0);
