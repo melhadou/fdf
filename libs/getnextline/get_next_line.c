@@ -6,12 +6,11 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 17:12:44 by melhadou          #+#    #+#             */
-/*   Updated: 2023/02/21 12:37:33 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:22:35 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdlib.h>
 
 char	*loop(int fd, char *buf, char *line)
 {
@@ -69,9 +68,10 @@ char	*get_bf_newline(char *line)
 		n = gt_strlen(line);
 	if (!n)
 		return (NULL);
-	bf_newline = malloc(sizeof(char) * (n + 1));
+	bf_newline = malloc(sizeof(char) * (n));
 	if (!bf_newline)
 		return (NULL);
+	n--;
 	while (++i < n)
 		bf_newline[i] = line[i];
 	bf_newline[i] = '\0';

@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:19:14 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 10:24:51 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:34:32 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,4 @@ t_double	**free_parsed_map(t_double **map)
 	}
 	free(map);
 	return (NULL);
-}
-
-int	diff_min_max_z(t_double *map, size_t col)
-{
-	size_t	i;
-	size_t	j;
-	double	min;
-	double	max;
-
-	i = 0;
-	min = map[0].arr[0];
-	max = map[0].arr[0];
-	while (i < col)
-	{
-		j = 0;
-		while (j < map[i].size)
-		{
-			if (map[i].arr[j] < min)
-				min = map[i].arr[j];
-			if (map[i].arr[j] > max)
-				max = map[i].arr[j];
-			j++;
-		}
-		i++;
-	}
-	if (max - min == 0)
-		return (MAX_SCALE);
-	return (max - min);
 }

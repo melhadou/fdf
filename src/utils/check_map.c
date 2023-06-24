@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:36:41 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 11:49:36 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:10:54 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ void	validate_map(t_double *map, size_t col)
 	}
 }
 
+int	supported_alpha(char c)
+{
+	if (c == '+' || c == ',' || c == 'a' \
+			|| c == '-' || c == 'x' || c == ' ' \
+			|| c == 'A' || c == 'X' || c == 'E' \
+			|| c == 'B' || c == 'C' || c == 'D' \
+			|| c == 'b' || c == 'c' || c == 'd' \
+			|| c == 'e' || c == 'f' || c == 'F')
+		return (1);
+	return (0);
+}
+
 int	check_map_alpha(char **map)
 {
 	int	i;
@@ -69,15 +81,19 @@ int	check_map_alpha(char **map)
 	i = -1;
 	while (map[++i])
 	{
-		j = -1;
-		while (map[i][++j])
+		j = 0;
+		while (map[i][j])
 		{
-			if (!ft_isdigit(map[i][j]) && !ft_isascii(map[i][j]))
+			if (supported_alpha(map[i][j]))
+				j++;
+			else if (ft_isalpha(map[i][j]))
 			{
-				ft_printf("Error on map: Invalid characters\n");
-				return (0);
+				ft_printf("Error on map: Invalid characters: %c \n", map[i][j]);
+				return (1);
 			}
+			else
+				j++;
 		}
 	}
-	return (1);
+	return (0);
 }

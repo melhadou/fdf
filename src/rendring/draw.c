@@ -6,21 +6,20 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/22 20:10:42 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:25:17 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // normed
-t_point	to_isometric(double x, double y, double z, int ratio)
+t_point	to_isometric(double x, double y, double z)
 {
 	t_point	p;
 
 	p.color = WHITE;
 	if (z != 0)
 		p.color = RED;
-	z *= (double)(MAX_SCALE - MIN_SCALE) / ratio;
 	p.x = (y - x) * cos(0.50);
 	p.y = (x + y) * sin(0.50) - z;
 	return (p);
@@ -59,7 +58,7 @@ void	rendring(t_fdf fdf)
 					fdf.line[j - 1].p[i]);
 			if (i + 1 == fdf.line[j].row)
 				bresenham(fdf, fdf.line[j].p[i], \
-					fdf.line[j - 1].p[i]);
+				fdf.line[j - 1].p[i]);
 			bresenham(fdf, fdf.line[j].p[i - 1], \
 					fdf.line[j - 1].p[i - 1]);
 		}
@@ -70,13 +69,16 @@ void	rendring(t_fdf fdf)
 void	rendring_one_row(t_fdf fdf)
 {
 	size_t	i;
+	size_t	j;
 
-	i = 0;
+	j = -1;
 	mlx_clear_window(fdf.mlx, fdf.mlx_win);
-	while (++i < fdf.line[0].row)
+	while (++j < fdf.col)
 	{
-		bresenham(fdf, fdf.line[0].p[i - 1], fdf.line[0].p[i]);
-		i++;
+		i = 0;
+		while (++i < fdf.line[j].row)
+			bresenham(fdf, fdf.line[j].p[i - 1], \
+				fdf.line[j].p[i]);
 	}
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, fdf.img->img, 0, 0);
 }

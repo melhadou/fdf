@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 10:57:43 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:06:18 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	**read_map(int fd)
 		map = append_to_arr(map, line);
 		line = get_next_line(fd);
 	}
-	if (!check_map_alpha(map))
+	if (check_map_alpha(map))
 		return (NULL);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 10:56:19 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 19:30:42 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,10 +149,9 @@ void		bresenham(t_fdf fdf, t_point start, t_point end);
 int			get_vals(t_point end, t_point start);
 void		bers_two(t_bresenham *bres);
 void		bers_init(t_bresenham *bres, t_point *start, t_point *end);
+t_point		to_isometric(double x, double y, double z);
 
 // fdf alloc
 t_fdf		populate_fdf(t_double *map, int col);
-int			diff_min_max_z(t_double *map, size_t col);
 void		print_map(t_fdf fdf);
-t_point		to_isometric(double x, double y, double z, int ratio);
 #endif // FDF_H
