@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 01:19:22 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/22 19:21:35 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:10:42 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	rendring(t_fdf fdf)
 
 	j = 0;
 	mlx_clear_window(fdf.mlx, fdf.mlx_win);
-	// if (fdf.col == 1)
-	// 	return (rendring_one_row(fdf));
+	if (fdf.col == 1)
+		return (rendring_one_row(fdf));
 	while (++j < fdf.col)
 	{
 		i = 0;

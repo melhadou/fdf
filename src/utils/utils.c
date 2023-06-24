@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:19:14 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/22 17:29:19 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:24:51 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ int	diff_min_max_z(t_double *map, size_t col)
 		i++;
 	}
 	if (max - min == 0)
-		return (1);
+		return (MAX_SCALE);
 	return (max - min);
 }

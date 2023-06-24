@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/22 19:20:54 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:56:19 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void		ft_free_t_double(t_double *p, size_t col);
 void		validate_map(t_double *map, size_t col);
 int			check_file_extension(char *file_name);
 int			open_file(char *file_name);
+int			check_map_alpha(char **map);
 
 // drawing functions
 void		rendring(t_fdf fdf);

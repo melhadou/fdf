@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:36:41 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/22 18:11:34 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:57:34 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	check_file_extension(char *file_name)
 	if (len > 4)
 	{
 		if (!ft_strcmp(&file_name[len - 4], ".fdf"))
+		{
 			return (1);
+		}
 	}
+	ft_printf("invalid file extension\n");
 	return (0);
 }
 
@@ -40,7 +43,6 @@ int	open_file(char *file_name)
 
 void	validate_map(t_double *map, size_t col)
 {
-	// loop over the map and check the number of rows. if its 1. on all over them return error
 	size_t	i;
 	size_t	j;
 
@@ -57,4 +59,25 @@ void	validate_map(t_double *map, size_t col)
 		}
 		i++;
 	}
+}
+
+int	check_map_alpha(char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (!ft_isdigit(map[i][j]) && map[i][j] != '/' && map[i][j] != '*')
+			{
+				ft_printf("Error on map: Invalid characters\n");
+				return (0);
+			}
+		}
+	}
+	return (1);
 }
