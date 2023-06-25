@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:21 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 21:06:18 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/25 13:52:18 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	**append_to_arr(char **map, char *line)
 	if (!map)
 	{
 		map = malloc(sizeof(char *));
+		if (!map)
+			return (NULL);
 		*map = NULL;
 	}
 	ret_map = malloc((arr_len(map) + 2) * sizeof(char *));
