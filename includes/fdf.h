@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 19:30:42 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/06/25 12:12:01 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,17 @@
 # define PLUS_KEY 69
 # define MINUS_KEY 78
 
-typedef struct t_bresenham
+typedef struct t_dda
 {
-	int	color;
-	int	dx;
-	int	dy;
-	int	x;
-	int	y;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
-}	t_bresenham;
+	float	dx;
+	float	dy;
+	float	steps;
+	float	x_inc;
+	float	y_inc;
+	float	x;
+	float	y;
+	int		color;
+}	t_dda;
 
 /**
  * Iamge struct
@@ -145,10 +144,8 @@ int			check_map_alpha(char **map);
 // drawing functions
 void		rendring(t_fdf fdf);
 void		rendring_one_row(t_fdf fdf);
-void		bresenham(t_fdf fdf, t_point start, t_point end);
 int			get_vals(t_point end, t_point start);
-void		bers_two(t_bresenham *bres);
-void		bers_init(t_bresenham *bres, t_point *start, t_point *end);
+void		dda(t_fdf fdf, t_point start, t_point end);
 t_point		to_isometric(double x, double y, double z);
 
 // fdf alloc

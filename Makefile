@@ -16,7 +16,7 @@ PARSING_DIR = $(SRC_DIR)parsing/
 PARSING_FILES = read_map.c parse.c fdf_alloc.c
 
 RENDRING_DIR = $(SRC_DIR)rendring/
-RENDRING_FILES = draw.c resize.c events.c bersnham.c
+RENDRING_FILES = draw.c resize.c events.c dda.c
 
 UTILS_DIR = $(SRC_DIR)utils/
 UTILS_FILES = utils.c check_map.c
