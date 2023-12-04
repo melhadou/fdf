@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:32:25 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/24 18:26:44 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:13:15 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 			exit(1);
 		fdf = fdf_init(map);
 		rendring(fdf);
-		mlx_hook(fdf.mlx_win, 2, 0, &key_hook, &fdf);
+		mlx_hook(fdf.mlx_win, 2, (1L<<0), &key_hook, &fdf);
 		mlx_hook(fdf.mlx_win, 17, 0, &destroy_win, &fdf);
 		mlx_loop(fdf.mlx);
 	}

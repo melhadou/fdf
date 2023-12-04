@@ -1,18 +1,636 @@
 [
- {
-  "directory": "/Users/melhadou/dev/42/fdf", 
-  "arguments": [
-   "gcc", 
-   "-Wall", 
-   "-Wextra", 
-   "-Werror", 
-   "-Iincludes", 
-   "-I/usr/local/include", 
-   "-c", 
-   "src/main.c", 
-   "-o", 
-   "src/main.o"
-  ], 
-  "file": "src/main.c"
- }
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_atoi.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_atoi.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_bzero.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_bzero.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_calloc.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_calloc.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_isalnum.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_isalnum.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_isalpha.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_isalpha.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_isascii.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_isascii.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_isdigit.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_isdigit.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_isprint.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_isprint.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_memcpy.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_memcpy.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_memmove.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_memmove.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_memset.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_memset.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strchr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strchr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strdup.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strdup.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strlcat.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strlcat.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strlcpy.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strlcpy.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strlen.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strlen.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strncmp.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strncmp.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strnstr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strnstr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strrchr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strrchr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_tolower.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_tolower.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_toupper.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_toupper.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_memchr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_memchr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_memcmp.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_memcmp.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_substr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_substr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strtrim.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strtrim.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strjoin.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strjoin.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_split.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_split.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putchar_fd.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_putchar_fd.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putstr_fd.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_putstr_fd.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putendl_fd.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_putendl_fd.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putnbr_fd.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_putnbr_fd.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strmapi.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strmapi.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_striteri.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_striteri.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_itoa.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_itoa.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_strcmp.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/libft",
+    "file": "/home/melhadou/Dev/fdf/libs/libft/ft_strcmp.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_printf.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/ft_printf",
+    "file": "/home/melhadou/Dev/fdf/libs/ft_printf/ft_printf.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_puthex.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/ft_printf",
+    "file": "/home/melhadou/Dev/fdf/libs/ft_printf/ft_puthex.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putchar.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/ft_printf",
+    "file": "/home/melhadou/Dev/fdf/libs/ft_printf/ft_putchar.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putnbr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/ft_printf",
+    "file": "/home/melhadou/Dev/fdf/libs/ft_printf/ft_putnbr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "ft_putstr.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/ft_printf",
+    "file": "/home/melhadou/Dev/fdf/libs/ft_printf/ft_putstr.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "get_next_line.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/getnextline",
+    "file": "/home/melhadou/Dev/fdf/libs/getnextline/get_next_line.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "get_next_line_utils.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf/libs/getnextline",
+    "file": "/home/melhadou/Dev/fdf/libs/getnextline/get_next_line_utils.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/main.c",
+    "output": "/home/melhadou/Dev/fdf/src/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/parsing/read_map.o",
+      "src/parsing/read_map.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/parsing/read_map.c",
+    "output": "/home/melhadou/Dev/fdf/src/parsing/read_map.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/parsing/parse.o",
+      "src/parsing/parse.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/parsing/parse.c",
+    "output": "/home/melhadou/Dev/fdf/src/parsing/parse.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/parsing/fdf_alloc.o",
+      "src/parsing/fdf_alloc.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/parsing/fdf_alloc.c",
+    "output": "/home/melhadou/Dev/fdf/src/parsing/fdf_alloc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/rendring/draw.o",
+      "src/rendring/draw.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/rendring/draw.c",
+    "output": "/home/melhadou/Dev/fdf/src/rendring/draw.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/rendring/resize.o",
+      "src/rendring/resize.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/rendring/resize.c",
+    "output": "/home/melhadou/Dev/fdf/src/rendring/resize.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/rendring/events.o",
+      "src/rendring/events.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/rendring/events.c",
+    "output": "/home/melhadou/Dev/fdf/src/rendring/events.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/rendring/dda.o",
+      "src/rendring/dda.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/rendring/dda.c",
+    "output": "/home/melhadou/Dev/fdf/src/rendring/dda.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/utils/utils.o",
+      "src/utils/utils.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/utils/utils.c",
+    "output": "/home/melhadou/Dev/fdf/src/utils/utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iincludes",
+      "-c",
+      "-o",
+      "src/utils/check_map.o",
+      "src/utils/check_map.c"
+    ],
+    "directory": "/home/melhadou/Dev/fdf",
+    "file": "/home/melhadou/Dev/fdf/src/utils/check_map.c",
+    "output": "/home/melhadou/Dev/fdf/src/utils/check_map.o"
+  }
 ]

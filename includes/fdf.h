@@ -6,7 +6,7 @@
 /*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:05:31 by melhadou          #+#    #+#             */
-/*   Updated: 2023/06/25 12:12:01 by melhadou         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:17:40 by melhadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 // used headers
-# include "mlx.h"
+# include "../libs/mlx/mlx.h"
 # include "../libs/getnextline/get_next_line.h"
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/libft/libft.h"
@@ -30,18 +30,37 @@
 # define WHITE 0xFFFFFF
 
 // Windows size
-# define WINDOW_WIDTH 1900
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 1080
+# define WINDOW_HEIGHT 720
 # define MIN_SCALE 0
 # define MAX_SCALE 2
 
+#ifdef __linux__
+
+enum {
+ESC = 65307,
+ UP_KEY = 65362,
+ DOWN_KEY = 65364,
+LEFT_KEY = 65361,
+ RIGHT_KEY = 65363,
+ PLUS_KEY = 61,
+ MINUS_KEY = 45
+};
+
+#elif __APPLE__
+enum {
+	ESC = 53,
+ UP_KEY = 126,
+ DOWN_KEY = 125,
+ LEFT_KEY = 123,
+ RIGHT_KEY = 124,
+ PLUS_KEY = 69,
+ MINUS_KEY = 78
+};
+#endif
+
+
 // mlx key events
-# define UP_KEY 126
-# define DOWN_KEY 125
-# define LEFT_KEY 123
-# define RIGHT_KEY 124
-# define PLUS_KEY 69
-# define MINUS_KEY 78
 
 typedef struct t_dda
 {

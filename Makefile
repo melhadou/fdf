@@ -5,9 +5,18 @@ CC = cc  -Wall -Wextra -Werror
 LIBFT = libs/libft
 GNL = libs/getnextline
 FT_PRINTF = libs/ft_printf
+MLX = libs/mlx
+
+ifeq ($(UNAME), Darwin) # iMac / iOS
+	CC = gcc
+	LFLAGS += -framework OpenGL -framework AppKit
+else #Linux and others...
+	CC = gcc
+	LFLAGS += -lbsd -lXext -lX11 -lm
+endif
 
 INCLUDES = -Iincludes 
-LIBS = $(addprefix $(GNL), /gnl.a) $(addprefix $(LIBFT), /libft.a) $(addprefix $(FT_PRINTF), /libftprintf.a)
+LIBS = $(addprefix $(GNL), /gnl.a) $(addprefix $(LIBFT), /libft.a) $(addprefix $(FT_PRINTF), /libftprintf.a) $(addprefix $(MLX), /libmlx.a)
 
 SRC_DIR = src/
 SRC_FILES = main.c
@@ -35,10 +44,13 @@ BCYAN=\033[1;36m
 BYELLOW=\033[1;33m
 NC=\033[0m
 
-all :  libft ft_printf gnl $(NAME)
+all : mlx libft ft_printf gnl $(NAME)
 	@echo "${BCYAN}Successfully Completed ${NC}"
 
 debug : $(NAME)
+
+mlx:
+	@cd $(MLX) && $(MAKE)
 
 libft:
 	@echo "${BYELLOW}Making Libft ${NC}"
@@ -51,7 +63,7 @@ ft_printf:
 	@cd $(FT_PRINTF) && make
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -framework OpenGL -lmlx -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC)  $(CFLAGS) $(INCLUDES) -c $< -o $@
